@@ -1,0 +1,124 @@
+{
+  "httpServer": {
+    // Built-in HTTP server configuration
+    "host": "+",
+    // Host name for server. +' will bound to all domain names for the specified port
+    "port": "8881"
+    //port to listen on
+  },
+  "logging": {
+    //Logging configuration
+    "levels": [
+      // Type of events to put to log file. If * all types of errors
+      "*"
+    ],
+    "path": "./logs"
+    //Path to folder where server place flog files (including rotated logs)
+  },
+  "security": {
+    //List of supported authentication methods
+    "authenticationMethods": [
+      "UB"
+    ]
+    //can be used as default method
+  },
+  "application": {
+    //Business logic configuration
+    "defaultLang": "en",
+    "domain": {
+      //Domain models. Loaded in the order in which they appear in this array
+      "models": [
+        // list of models which should be loaded
+        {
+          "path": "./node_modules/@unitybase/ub"
+        },
+        {
+          "path": "./node_modules/@unitybase/uba"
+        },
+        {
+          "path": "./node_modules/@unitybase/ubs"
+        },
+        {
+          "path": "./node_modules/@unitybase/ubm"
+        },
+        {
+          "path": "./node_modules/@unitybase/ub-pub"
+        },
+        {
+          "path": "./node_modules/@unitybase/adminui-pub"
+        },
+        {
+          "path": "./node_modules/@unitybase/adminui-reg"
+        },
+        {
+          "path": "./node_modules/@unitybase/adminui-vue"
+        },
+        {
+          //Path to the our created model
+          "path": "./models/requests"
+        }
+      ]
+    },
+    "connections": [
+      // Here define the database connections
+      {
+        //Unique connection name,
+        "name": "main",
+        //Is this connection is default for application ,
+        "isDefault": true,
+        //Database driver used for connection       ,
+        "driver": "SQLite3",
+        //Database dialect,
+        "dialect": "SQLite3",
+        // Name of the database,
+        "databaseName": "./mainDB.db",
+        //Array of supported locales,
+        "supportLang": [
+          "en"
+        ]
+      }
+    ],
+    "blobStores": [
+      {
+        // Unique blobStore name.,
+        "name": "avatars",
+        // todo,
+        "tempPath": "./avatars/_temp",
+        // The path to store root folder,
+        "path": "./avatars",
+        // Approximate number of files to store. Simple = up to    10000,
+        "storeSize": "Simple",
+        //Is this store default for application,
+        "isDefault": true
+      },
+      {
+        // Unique blobStore name.,
+        "name": "attach",
+        // The path to store root folder,
+        "path": "./docs/attach/",
+        // Approximate number of files to store. Simple = up to    10000,
+        "storeSize": "Medium",
+        //Is this store default for application,
+        "isDefault": false,
+        "historyDepth": 2
+      },
+      {
+        "name": "mdb",
+        "tempPath": "./avatars/_temp",
+        "storeType": "Virtual"
+      }
+    ]
+  },
+  "uiSettings": {
+    "adminUI": {
+      //Settings for admin UI
+      "endpoint": "adm",
+      //Name of application for show on the login form,
+      "applicationName": "City Portal",
+      //Title of HTML page for adminUI,
+      "applicationTitle": "Requests",
+      //For development purpose only,
+      "defaultPasswordForDebugOnly": "admin"
+    }
+  }
+}

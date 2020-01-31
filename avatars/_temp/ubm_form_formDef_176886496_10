@@ -1,0 +1,13 @@
+// @! "do not remove comments below unless you know what you do!"
+// @mi_modifyDate "undefined"
+// @isDefault "false"
+// @entity "req_reqList"
+// @model "RequestList"
+// @formType "auto"
+// @caption "My request list"
+// @description "undefined"
+exports.formDef = {
+	items: [
+		/*put your items here*/
+	]
+};
