@@ -1,0 +1,6 @@
+node_modules
+logs
+.vscode
+mainDB.db
+mainDB.db-wal
+mainDB.db-shm
