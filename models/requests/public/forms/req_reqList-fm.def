@@ -47,6 +47,13 @@ exports.formDef = {
     { attributeName: "applicantPhone" /*Applicant`s phone*/},
     { attributeName: "applicantInfo" /*Applicant`s contact info*/},
     { attributeName: "reqText" /*Text of Request*/},
-    { attributeName: "answer" /*Request answer*/}
+    { attributeName: "answer" /*Request answer*/},
+    {
+      attributeName: "reqDoc",
+      expanded: true,            // Show on form
+      height: 200,
+      layout: 'auto',            // Auto width
+      contentTypeMapping: {'image/jpeg': 'UB.ux.UBImg'}
+    }
   ]
 };
