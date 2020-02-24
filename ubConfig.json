@@ -51,12 +51,16 @@
       {
         "name": "main",
         "isDefault": true,
-        "driver": "SQLite3",
-        "dialect": "SQLite3",
-        "databaseName": "./mainDB.db",
+        "driver": "PostgreSQL",
+        "dialect": "PostgreSQL",
+        "serverName": "postgresql://procmain.eu:5432",
+        "databaseName": "cityportal",
+        "userID": "cityportal",
+        "password": "A5Systems",
         "supportLang": [
           "en"
-        ]
+        ],
+        "advSettings": "LibLocation=C:\\Program Files\\1cv8\\8.3.16.1148\\bin\\libpq.dll"
       }
     ],
     "blobStores": [
