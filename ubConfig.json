@@ -59,8 +59,7 @@
         "password": "A5Systems",
         "supportLang": [
           "en"
-        ],
-        "advSettings": "LibLocation=C:\\Program Files\\1cv8\\8.3.16.1148\\bin\\libpq.dll"
+        ]
       }
     ],
     "blobStores": [
