@@ -54,9 +54,9 @@
         "driver": "PostgreSQL",
         "dialect": "PostgreSQL",
         "serverName": "postgresql://procmain.eu:5432",
-        "databaseName": "cityportal",
-        "userID": "cityportal",
-        "password": "A5Systems",
+        "databaseName": "pl",
+        "userID": "postgres",
+        "password": "FS9final",
         "supportLang": [
           "en"
         ]
@@ -87,8 +87,8 @@
   "uiSettings": {
     "adminUI": {
       "endpoint": "adm",
-      "applicationName": "City Portal",
-      "applicationTitle": "Requests",
+      "applicationName": "ProfitAndLoss",
+      "applicationTitle": "Profit & Loss",
       "defaultPasswordForDebugOnly": "admin"
     }
   }

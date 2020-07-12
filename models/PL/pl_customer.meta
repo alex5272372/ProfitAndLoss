@@ -1,0 +1,19 @@
+{
+  "caption": "Контрагенти",
+  "description": "Контрагенти",
+  "descriptionAttribute": "name",
+  "attributes": [
+    {
+      "name": "name",
+      "dataType": "String",
+      "size": 100,
+      "caption": "Назва",
+      "description": "Назва",
+      "allowNull": false,
+      "isMultiLang": false
+    }
+  ],
+  "mixins": {
+      "mStorage": {}
+  }
+}
