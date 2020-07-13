@@ -5,7 +5,7 @@
   "main": "pl.js",
   "config": {
     "ubmodel": {
-      "name": "pl"
+      "name": "PL"
     }
   },
   "scripts": {

@@ -43,7 +43,7 @@
           "path": "./node_modules/@unitybase/adminui-vue"
         },
         {
-          "path": "./models/requests"
+          "path": "./models/PL"
         }
       ]
     },
@@ -55,7 +55,7 @@
         "dialect": "PostgreSQL",
         "serverName": "postgresql://procmain.eu:5432",
         "databaseName": "pl",
-        "userID": "postgres",
+        "userID": "pl",
         "password": "FS9final",
         "supportLang": [
           "en"

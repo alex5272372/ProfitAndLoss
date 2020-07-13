@@ -9,10 +9,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@unitybase/adminui-pub": "^5.12.26",
-    "@unitybase/adminui-reg": "^5.3.27",
-    "@unitybase/adminui-vue": "^1.9.18",
-    "@unitybase/ubcli": "^5.4.13",
-    "@unitybase/ubq": "^5.2.70"
+    "@unitybase/adminui-pub": "^5.13.24",
+    "@unitybase/adminui-reg": "^5.4.24",
+    "@unitybase/adminui-vue": "^1.11.12",
+    "@unitybase/ubcli": "^5.5.20",
+    "@unitybase/ubq": "^5.3.19"
   }
 }

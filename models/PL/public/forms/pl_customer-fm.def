@@ -1,0 +1,12 @@
+// @! "do not remove comments below unless you know what you do!"
+// @isDefault "false"
+// @entity "pl_customer"
+// @model "PL"
+// @formType "auto"
+// @caption "Контрагенти"
+// @description "Контрагенти"
+exports.formDef = {
+  items: [
+    { attributeName: 'name' }
+  ]
+}
