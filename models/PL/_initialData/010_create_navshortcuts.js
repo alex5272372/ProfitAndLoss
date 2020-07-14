@@ -1,143 +1,128 @@
+const desktops = {
+  adm_desktop: {
+    adm_folder_users: {
+      uba_user: false,
+      uba_userrole: false,
+      uba_group: false,
+      uba_usergroup: false
+    }
+  },
+  full_desktop: {
+    pl_dict_folder: {
+      pl_customer: false,
+      pl_employee: false,
+      pl_organization: false,
+      pl_product: false
+    }
+  }
+}
+
+const captions = {
+  adm_desktop: 'Адміністратор',
+  adm_folder_users: 'Користувачі',
+  uba_user: 'Список користувачів',
+  uba_userrole: 'Ролі користувачів',
+  uba_group: 'Список груп',
+  uba_usergroup: 'Групи користувачів',
+  full_desktop: 'Повний',
+  pl_dict_folder: 'Довідники',
+  pl_customer: 'Контрагенти',
+  pl_employee: 'Працівники',
+  pl_organization: 'Організації',
+  pl_product: 'Номенклатура'
+}
+
+const iconCls = {
+  adm_folder_users: 'fa fa-user',
+  uba_user: 'fa fa-user-secret',
+  uba_group: 'fa fa-group'
+}
+
+function insertNavshortcut(connection, navshortcut, desktopID, code, parentID) {
+  let navshortcutID = connection.lookup('ubm_navshortcut', 'ID', {
+    expression: 'code',
+    condition: 'equal',
+    values: { code }
+  })
+
+  if (navshortcut) {
+    if (!navshortcutID) {
+      console.log('\tcreate `%s` folder', code)
+      navshortcutID = connection.insert({
+        entity: 'ubm_navshortcut',
+        fieldList: ['ID'],
+        execParams: {
+          desktopID,
+          code,
+          caption: captions[code],
+          iconCls: iconCls[code],
+          isFolder: true,
+          isCollapsed: false,
+          displayOrder: 10
+        }
+      })
+    } else {
+      console.log('\tuse existed folder with code `%s`', code)
+    }
+    Object.keys(navshortcut)
+      .forEach(childCode => insertNavshortcut(connection, navshortcut[childCode], desktopID, childCode, navshortcutID))
+
+  } else {
+    if (!navshortcutID) {
+      console.log('\tcreate `%s` shortcut', code)
+      connection.insert({
+        fieldList: ['ID'],
+        entity: 'ubm_navshortcut',
+        execParams: {
+          desktopID,
+          parentID,
+          code,
+          caption: captions[code],
+          iconCls: iconCls[code],
+          displayOrder: 10,
+          cmdCode: JSON.stringify({
+            cmdType: 'showList',
+            cmdData: {
+              params: [{
+                entity: code,
+                fieldList: '*'
+              }]
+            }
+          })
+        }
+      })
+    } else {
+      console.log('\tuse existed shortcut with code `%s`', code)
+    }
+  }
+}
+
 module.exports = session => {
   const { connection } = session
-  // In the ubm_desktop table look for the desktop with the code full_desktop
-  let desktopID = connection.lookup('ubm_desktop', 'ID', {
-    expression: 'code',
-    condition: 'equal',
-    values: { code: 'full_desktop' }
-  })
-
-  console.info('\tFill `Full` desktop')
-  if (!desktopID) { //If not found, create a new
-    console.info('\t\tcreate new `Full` desktop')
-    desktopID = connection.insert({
-      entity: 'ubm_desktop',
-      fieldList: ['ID'],
-      execParams: {
-        code: 'full_desktop',
-        caption: 'Повний'
-      }
+  
+  Object.keys(desktops).forEach(desktopCode => {
+    let desktopID = connection.lookup('ubm_desktop', 'ID', {
+      expression: 'code',
+      condition: 'equal',
+      values: { code: desktopCode }
     })
-  } else { //else display a message
-    console.info('\t\tuse existed desktop with code `full_desktop`', desktopID)
-  }
 
-  let folderID = connection.lookup('ubm_navshortcut', 'ID', {
-    expression: 'code',
-    condition: 'equal',
-    values: { code: 'pl_dict_folder' }
-  })
-  if (!folderID) {
-    console.log('\t\tcreate `Dictionaries` folder')
-    folderID = connection.insert({
-      entity: 'ubm_navshortcut',
-      fieldList: ['ID'],
-      execParams: {
-        desktopID,
-        code: 'pl_dict_folder',
-        caption: 'Довідники',
-        isFolder: true,
-        isCollapsed: false,
-        displayOrder: 10
-      }
-    })
-  } else {
-    console.info('\t\tuse existed folder with code `pl_dict_folder`', folderID)
-  }
+    console.log('Fill `%s` desktop', desktopCode)
+    if (!desktopID) {
+      console.log('\tcreate new `%s` desktop', desktopCode)
+      desktopID = connection.insert({
+        entity: 'ubm_desktop',
+        fieldList: ['ID'],
+        execParams: {
+          code: desktopCode,
+          caption: captions[desktopCode]
+        }
+      })
+    } else {
+      console.log('\tuse existed desktop with code `%s`', desktopCode)
+    }
 
-  let customerID = connection.lookup('ubm_navshortcut', 'ID', {
-    expression: 'code',
-    condition: 'equal',
-    values: { code: 'pl_customer' }
+    Object.keys(desktops[desktopCode])
+      .forEach(code => insertNavshortcut(connection, desktops[desktopCode][code], desktopID, code))
   })
-  if (!customerID) {
-    console.log('\t\t\tcreate `Customer` shortcut')
-    customerID = connection.insert({
-      fieldList: ['ID'],
-      entity: 'ubm_navshortcut',
-      execParams: {
-        desktopID,
-        parentID: folderID,
-        code: 'pl_customer',
-        caption: 'Контрагенти',
-        iconCls: 'fa fa-building-o',
-        displayOrder: 10,
-        cmdCode: JSON.stringify({ cmdType: 'showList', cmdData: { params: [{ entity: 'pl_customer', fieldList: '*' }] } })
-      }
-    })
-  } else {
-    console.info('\t\tuse existed shortcut with code `pl_customer`', customerID)
-  }
-
-  let employeeID = connection.lookup('ubm_navshortcut', 'ID', {
-    expression: 'code',
-    condition: 'equal',
-    values: { code: 'pl_employee' }
-  })
-  if (!employeeID) {
-    console.log('\t\t\tcreate `Employee` shortcut')
-    employeeID = connection.insert({
-      fieldList: ['ID'],
-      entity: 'ubm_navshortcut',
-      execParams: {
-        desktopID,
-        parentID: folderID,
-        code: 'pl_employee',
-        caption: 'Працівники',
-        iconCls: 'fa fa-building-o',
-        displayOrder: 10,
-        cmdCode: JSON.stringify({ cmdType: 'showList', cmdData: { params: [{ entity: 'pl_employee', fieldList: '*' }] } })
-      }
-    })
-  } else {
-    console.info('\t\tuse existed shortcut with code `pl_employee`', employeeID)
-  }
-
-  let organizationID = connection.lookup('ubm_navshortcut', 'ID', {
-    expression: 'code',
-    condition: 'equal',
-    values: { code: 'pl_organization' }
-  })
-  if (!organizationID) {
-    console.log('\t\t\tcreate `Organization` shortcut')
-    organizationID = connection.insert({
-      fieldList: ['ID'],
-      entity: 'ubm_navshortcut',
-      execParams: {
-        desktopID,
-        parentID: folderID,
-        code: 'pl_organization',
-        caption: 'Організації',
-        iconCls: 'fa fa-building-o',
-        displayOrder: 10,
-        cmdCode: JSON.stringify({ cmdType: 'showList', cmdData: { params: [{ entity: 'pl_organization', fieldList: '*' }] } })
-      }
-    })
-  } else {
-    console.info('\t\tuse existed shortcut with code `pl_organization`', organizationID)
-  }
-
-  let productID = connection.lookup('ubm_navshortcut', 'ID', {
-    expression: 'code',
-    condition: 'equal',
-    values: { code: 'pl_product' }
-  })
-  if (!productID) {
-    console.log('\t\t\tcreate `Product` shortcut')
-    productID = connection.insert({
-      fieldList: ['ID'],
-      entity: 'ubm_navshortcut',
-      execParams: {
-        desktopID,
-        parentID: folderID,
-        code: 'pl_product',
-        caption: 'Номенклатура',
-        iconCls: 'fa fa-building-o',
-        displayOrder: 10,
-        cmdCode: JSON.stringify({ cmdType: 'showList', cmdData: { params: [{ entity: 'pl_product', fieldList: '*' }] } })
-      }
-    })
-  } else {
-    console.info('\t\tuse existed shortcut with code `pl_product`', productID)
-  }
 }
