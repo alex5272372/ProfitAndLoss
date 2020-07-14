@@ -1,1 +1,1 @@
-const UB = require('./node_modules/@unitybase/ub')
+const UB = require('@unitybase/ub')

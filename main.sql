@@ -13,29 +13,24 @@ Altering type for uba_user.lastPasswordChangeDate from TIMESTAMP WITH TIME ZONE 
  
 -- Create tables
 --#############################################################
-create table req_depart(
+create table pl_customer(
 	ID BIGINT not null,
-	name VARCHAR(255) not null,
-	postAddr VARCHAR(255) not null,
-	phoneNum VARCHAR(255) not null
+	name VARCHAR(100) not null
 );
 --
-create table req_reqList(
+create table pl_employee(
 	ID BIGINT not null,
-	reqDate TIMESTAMP not null,
-	applicantPhone VARCHAR(255) not null,
-	applicantInfo VARCHAR(255) not null,
-	department BIGINT not null,
-	subDepartment BIGINT null,
-	reqText TEXT not null,
-	reqDoc VARCHAR(4000) null,
-	answer TEXT null
+	name VARCHAR(100) not null
 );
 --
-create table req_subDepart(
+create table pl_organization(
 	ID BIGINT not null,
-	name VARCHAR(255) not null,
-	department BIGINT not null
+	name VARCHAR(100) not null
+);
+--
+create table pl_product(
+	ID BIGINT not null,
+	name VARCHAR(100) not null
 );
 --
 create table ub_blobHistory(
@@ -163,7 +158,7 @@ create table ubm_desktop(
 	caption VARCHAR(255) not null,
 	code VARCHAR(50) not null,
 	description VARCHAR(255) null,
-	iconCls VARCHAR(255) default 'fa fa-desktop' not null,
+	iconCls VARCHAR(255) default 'u-icon-desktop' not null,
 	url VARCHAR(255) null,
 	isDefault SMALLINT default 0 not null,
 	displayOrder INTEGER default 1000 not null,
@@ -381,6 +376,8 @@ alter table uba_audit alter column toValue type TEXT;
 --
 alter table uba_subject alter column name type VARCHAR(256);
 --
+alter table uba_user alter column trustedIP type VARCHAR(2000);
+--
 alter table uba_user alter column lastPasswordChangeDate type TIMESTAMP;
  
 -- ! update values for known or estimated changes
@@ -453,11 +450,13 @@ alter table ubs_settings alter column mi_modifyUser set not null;
  
 -- Create primary keys
 --#############################################################
-alter table req_depart add constraint PK_REQ_DEPART PRIMARY KEY (ID);
+alter table pl_customer add constraint PK_PL_CUSTOMER PRIMARY KEY (ID);
 --
-alter table req_reqList add constraint PK_REQ PRIMARY KEY (ID);
+alter table pl_employee add constraint PK_PL_EMPLOYEE PRIMARY KEY (ID);
 --
-alter table req_subDepart add constraint PK_REQ_SUBDEPART PRIMARY KEY (ID);
+alter table pl_organization add constraint PK_PL_ORGANIZATION PRIMARY KEY (ID);
+--
+alter table pl_product add constraint PK_PL_PRODUCT PRIMARY KEY (ID);
 --
 alter table ub_blobHistory add constraint PK_UB_BLOBHISTORY PRIMARY KEY (ID);
 --
@@ -503,14 +502,6 @@ alter table ubs_softLock add constraint PK_SLOCK PRIMARY KEY (ID);
  
 -- Create indexes
 --#############################################################
-create unique index UIDX_REQ_DEPART_NAME on req_depart(NAME);
---
-create  index IDX_REQ_DEPARTMENT on req_reqList(DEPARTMENT);
---
-create  index IDX_REQ_SUBDEPARTMENT on req_reqList(SUBDEPARTMENT);
---
-create  index IDX_REQ_SUBDEPART_DEPARTMENT on req_subDepart(DEPARTMENT);
---
 create unique index UIDX_BHIST_IAR on ub_blobHistory(INSTANCE,ATTRIBUTE,REVISION);
 --
 create unique index UIDX_UBA_ADVSECURITY_USERID on uba_advSecurity(USERID);
@@ -767,12 +758,6 @@ alter table ubs_message add constraint CHK_MSG_complete_BOOL check (complete in 
  
 -- Create foreign keys
 --#############################################################
-alter table req_reqList add constraint FK_REQ_DEPARTMENT_REF_REQ_DEPART foreign key (DEPARTMENT) references req_depart(ID);
---
-alter table req_reqList add constraint FK_REQ_SUBDEPARTMENT_REF_REQ_SUBDEPART foreign key (SUBDEPARTMENT) references req_subDepart(ID);
---
-alter table req_subDepart add constraint FK_REQ_SUBDEPART_DEPARTMENT_REF_REQ_DEPART foreign key (DEPARTMENT) references req_depart(ID);
---
 alter table uba_advSecurity add constraint FK_UBA_ADVSECURITY_USERID_REF_USR foreign key (USERID) references uba_user(ID);
 --
 alter table uba_advSecurity add constraint FK_UBA_ADVSECURITY_MI_OWNER_REF_USR foreign key (MI_OWNER) references uba_user(ID);
@@ -951,37 +936,21 @@ SELECT nextval('S_UBS_SETTINGS');
  
 -- Annotate an objects
 --#############################################################
-comment on table req_depart is 'department';
+comment on table pl_customer is 'Контрагенти';
 --
-comment on column req_depart.name is 'Department Name';
+comment on column pl_customer.name is 'Назва';
 --
-comment on column req_depart.postAddr is 'Department Address';
+comment on table pl_employee is 'Працівники';
 --
-comment on column req_depart.phoneNum is 'Department Phone';
+comment on column pl_employee.name is 'Назва';
 --
-comment on table req_reqList is 'request';
+comment on table pl_organization is 'Організації';
 --
-comment on column req_reqList.reqDate is 'Request Date';
+comment on column pl_organization.name is 'Назва';
 --
-comment on column req_reqList.applicantPhone is 'Applicant`s phone';
+comment on table pl_product is 'Номенклатура';
 --
-comment on column req_reqList.applicantInfo is 'Applicant`s contact info';
---
-comment on column req_reqList.department is 'Department';
---
-comment on column req_reqList.subDepartment is 'SubDepartment';
---
-comment on column req_reqList.reqText is 'Text of request';
---
-comment on column req_reqList.reqDoc is 'doc';
---
-comment on column req_reqList.answer is 'Request answer';
---
-comment on table req_subDepart is 'subDepartment';
---
-comment on column req_subDepart.name is 'Department Name';
---
-comment on column req_subDepart.department is 'department';
+comment on column pl_product.name is 'Назва';
 --
 comment on table ub_blobHistory is 'File BLOB history';
 --
@@ -1071,7 +1040,7 @@ comment on column uba_auditTrail.actionType is 'Action';
 --
 comment on column uba_auditTrail.actionUser is 'User';
 --
-comment on column uba_auditTrail.actionUserName is 'User';
+comment on column uba_auditTrail.actionUserName is 'Login';
 --
 comment on column uba_auditTrail.actionTime is 'Action time';
 --
@@ -1399,7 +1368,7 @@ comment on column ubm_navshortcut.isCollapsed is 'Show collapsed at the first st
 --
 comment on column ubm_navshortcut.displayOrder is 'Display order (in current node)';
 --
-comment on column ubm_navshortcut.iconCls is 'icon css class name';
+comment on column ubm_navshortcut.iconCls is 'Icon (CSS class)';
 --
 comment on column ubm_navshortcut.description is 'Shortcut description';
 --
