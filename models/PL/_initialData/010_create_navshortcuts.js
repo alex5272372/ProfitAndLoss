@@ -1,42 +1,31 @@
 const desktops = {
-  adm_desktop: {
-    adm_folder_users: {
-      uba_user: false,
-      uba_userrole: false,
-      uba_group: false,
-      uba_usergroup: false
-    }
-  },
-  full_desktop: {
-    pl_dict_folder: {
-      pl_customer: false,
-      pl_employee: false,
-      pl_organization: false,
-      pl_product: false
-    }
-  }
+  adm_desktop: ['Адміністратор', 'fas fa-user-cog', {
+    adm_folder_users: ['Користувачі', 'fa fa-user', {
+      uba_user: ['Список користувачів', 'fa fa-user'],
+      uba_userrole: ['Ролі користувачів', ''],
+      uba_group: ['Список груп', 'fa fa-group'],
+      uba_usergroup: ['Групи користувачів', '']
+    }],
+    adm_folder_security: ['Безпека', '', {
+      uba_role: ['Системні ролі', 'fa fa-users'],
+      uba_els: ['Права на методи', '']
+    }],
+    adm_folder_UI: ['Інтерфейс', 'fa fa-picture-o', {
+      ubm_enum: ['Переліки', ''],
+      ubm_desktop: ['Робочі столи', ''],
+      ubm_navshortcut: ['Ярлики', '']
+    }]
+  }],
+  full_desktop: ['Повний', 'u-icon-desktop', {
+    pl_folder_dict: ['Довідники', '', {
+      pl_customer: ['Контрагенти', ''],
+      pl_employee: ['Працівники', ''],
+      pl_organization: ['Організації', ''],
+      pl_product: ['Номенклатура', '']
+    }]
+  }]
 }
-
-const captions = {
-  adm_desktop: 'Адміністратор',
-  adm_folder_users: 'Користувачі',
-  uba_user: 'Список користувачів',
-  uba_userrole: 'Ролі користувачів',
-  uba_group: 'Список груп',
-  uba_usergroup: 'Групи користувачів',
-  full_desktop: 'Повний',
-  pl_dict_folder: 'Довідники',
-  pl_customer: 'Контрагенти',
-  pl_employee: 'Працівники',
-  pl_organization: 'Організації',
-  pl_product: 'Номенклатура'
-}
-
-const iconCls = {
-  adm_folder_users: 'fa fa-user',
-  uba_user: 'fa fa-user-secret',
-  uba_group: 'fa fa-group'
-}
+let displayOrder = 0
 
 function insertNavshortcut(connection, navshortcut, desktopID, code, parentID) {
   let navshortcutID = connection.lookup('ubm_navshortcut', 'ID', {
@@ -45,31 +34,33 @@ function insertNavshortcut(connection, navshortcut, desktopID, code, parentID) {
     values: { code }
   })
 
-  if (navshortcut) {
+  if (navshortcut[2]) {
     if (!navshortcutID) {
       console.log('\tcreate `%s` folder', code)
+      displayOrder += 10
       navshortcutID = connection.insert({
         entity: 'ubm_navshortcut',
         fieldList: ['ID'],
         execParams: {
           desktopID,
           code,
-          caption: captions[code],
-          iconCls: iconCls[code],
+          caption: navshortcut[0],
+          iconCls: navshortcut[1],
           isFolder: true,
           isCollapsed: false,
-          displayOrder: 10
+          displayOrder
         }
       })
     } else {
       console.log('\tuse existed folder with code `%s`', code)
     }
-    Object.keys(navshortcut)
-      .forEach(childCode => insertNavshortcut(connection, navshortcut[childCode], desktopID, childCode, navshortcutID))
+    Object.keys(navshortcut[2])
+      .forEach(childCode => insertNavshortcut(connection, navshortcut[2][childCode], desktopID, childCode, navshortcutID))
 
   } else {
     if (!navshortcutID) {
       console.log('\tcreate `%s` shortcut', code)
+      displayOrder += 10
       connection.insert({
         fieldList: ['ID'],
         entity: 'ubm_navshortcut',
@@ -77,9 +68,9 @@ function insertNavshortcut(connection, navshortcut, desktopID, code, parentID) {
           desktopID,
           parentID,
           code,
-          caption: captions[code],
-          iconCls: iconCls[code],
-          displayOrder: 10,
+          caption: navshortcut[0],
+          iconCls: navshortcut[1],
+          displayOrder,
           cmdCode: JSON.stringify({
             cmdType: 'showList',
             cmdData: {
@@ -115,14 +106,15 @@ module.exports = session => {
         fieldList: ['ID'],
         execParams: {
           code: desktopCode,
-          caption: captions[desktopCode]
+          caption: desktops[desktopCode][0],
+          iconCls: desktops[desktopCode][1]
         }
       })
     } else {
       console.log('\tuse existed desktop with code `%s`', desktopCode)
     }
 
-    Object.keys(desktops[desktopCode])
-      .forEach(code => insertNavshortcut(connection, desktops[desktopCode][code], desktopID, code))
+    Object.keys(desktops[desktopCode][2])
+      .forEach(code => insertNavshortcut(connection, desktops[desktopCode][2][code], desktopID, code))
   })
 }
