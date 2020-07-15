@@ -1,10 +1,10 @@
 // @! "do not remove comments below unless you know what you do!"
 // @isDefault "false"
-// @entity "pl_customer"
+// @entity "pl_product"
 // @model "PL"
 // @formType "auto"
-// @caption "Контрагенти"
-// @description "Контрагенти"
+// @caption "Номенклатура"
+// @description "Номенклатура"
 exports.formDef = {
   items: [
     { attributeName: 'name' }

@@ -17,11 +17,17 @@ const desktops = {
     }]
   }],
   full_desktop: ['Повний', 'u-icon-desktop', {
+    pl_folder_organization: ['Організації', '', {
+      org_organization: ['Власні організації', ''],
+      org_department: ['Підрозділи організації', ''],
+      org_employee: ['Співробітники організації', ''],
+      cdn_organization: ['Зовнішні організації', '']
+    }],
     pl_folder_dict: ['Довідники', '', {
-      pl_customer: ['Контрагенти', ''],
-      pl_employee: ['Працівники', ''],
-      pl_organization: ['Організації', ''],
-      pl_product: ['Номенклатура', '']
+      pl_product: ['Номенклатура', ''],
+      cdn_address: ['Адреси', ''],
+      cdn_person: ['Фізичні особи', ''],
+      cdn_profession: ['Професії', '']
     }]
   }]
 }

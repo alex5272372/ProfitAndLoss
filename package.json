@@ -12,6 +12,8 @@
     "@unitybase/adminui-pub": "^5.13.24",
     "@unitybase/adminui-reg": "^5.4.24",
     "@unitybase/adminui-vue": "^1.11.12",
+    "@unitybase/cdn": "^5.4.20",
+    "@unitybase/org": "^5.3.20",
     "@unitybase/ubcli": "^5.5.20",
     "@unitybase/ubq": "^5.3.19"
   }
