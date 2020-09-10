@@ -1,0 +1,19 @@
+{
+  "caption": "Model",
+  "description": "Model",
+  "descriptionAttribute": "name",
+  "attributes": [
+    {
+      "name": "name",
+      "dataType": "String",
+      "size": 100,
+      "caption": "Name",
+      "description": "Name",
+      "allowNull": false,
+      "isMultiLang": false
+    }
+  ],
+  "mixins": {
+      "mStorage": {}
+  }
+}

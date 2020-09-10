@@ -1,33 +1,14 @@
 const desktops = {
-  adm_desktop: ['Адміністратор', 'fas fa-user-cog', {
-    adm_folder_users: ['Користувачі', 'fa fa-user', {
-      uba_user: ['Список користувачів', 'fa fa-user'],
-      uba_userrole: ['Ролі користувачів', ''],
-      uba_group: ['Список груп', 'fa fa-group'],
-      uba_usergroup: ['Групи користувачів', '']
+  de_desktop: ['Data exchange', 'u-icon-desktop-swap', {
+    de_folder_metadata: ['Metadata', 'u-icon-attributes', {
+      de_model: ['Models', ''],
+      de_entity: ['Entities', ''],
+      de_attribute: ['Attributes', '']
     }],
-    adm_folder_security: ['Безпека', '', {
-      uba_role: ['Системні ролі', 'fa fa-users'],
-      uba_els: ['Права на методи', '']
-    }],
-    adm_folder_UI: ['Інтерфейс', 'fa fa-picture-o', {
-      ubm_enum: ['Переліки', ''],
-      ubm_desktop: ['Робочі столи', ''],
-      ubm_navshortcut: ['Ярлики', '']
-    }]
-  }],
-  full_desktop: ['Повний', 'u-icon-desktop', {
-    pl_folder_organization: ['Організації', '', {
-      org_organization: ['Власні організації', ''],
-      org_department: ['Підрозділи організації', ''],
-      org_employee: ['Співробітники організації', ''],
-      cdn_organization: ['Зовнішні організації', '']
-    }],
-    pl_folder_dict: ['Довідники', '', {
-      pl_product: ['Номенклатура', ''],
-      cdn_address: ['Адреси', ''],
-      cdn_person: ['Фізичні особи', ''],
-      cdn_profession: ['Професії', '']
+    de_folder_rules: ['Rules', 'u-icon-hierarchy', {
+      de_ruleModel: ['Rules for models', ''],
+      de_ruleEntity: ['Rules for entities', ''],
+      de_ruleAttribute: ['Rules for attributes', '']
     }]
   }]
 }

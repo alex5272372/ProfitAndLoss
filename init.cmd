@@ -8,6 +8,8 @@ call npx ubcli initDB -drop -create
 @if errorlevel 1 goto err
 call npx ubcli generateDDL -autorun
 @if errorlevel 1 goto err
+call npx ubcli initialize -m DE
+@if errorlevel 1 goto err
 call npx ubcli initialize -m PL
 @goto eof
 

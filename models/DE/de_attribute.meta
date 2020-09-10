@@ -1,0 +1,26 @@
+{
+  "caption": "Attribute",
+  "description": "Attribute",
+  "descriptionAttribute": "name",
+  "attributes": [
+    {
+      "name": "name",
+      "dataType": "String",
+      "size": 100,
+      "caption": "Name",
+      "description": "Name",
+      "allowNull": false,
+      "isMultiLang": false
+    },
+    {
+      "name": "parentEntity",
+      "dataType": "Entity",
+      "associatedEntity": "de_entity",
+      "caption": "Parent entity",
+      "allowNull": false
+    }
+  ],
+  "mixins": {
+      "mStorage": {}
+  }
+}

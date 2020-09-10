@@ -1,0 +1,33 @@
+{
+  "caption": "Rule for model",
+  "description": "Rule for model",
+  "descriptionAttribute": "name",
+  "attributes": [
+    {
+      "name": "name",
+      "dataType": "String",
+      "size": 100,
+      "caption": "Name",
+      "description": "Name",
+      "allowNull": false,
+      "isMultiLang": false
+    },
+    {
+      "name": "modelSource",
+      "dataType": "Entity",
+      "associatedEntity": "de_model",
+      "caption": "Model source",
+      "allowNull": false
+    },
+    {
+      "name": "modelDestination",
+      "dataType": "Entity",
+      "associatedEntity": "de_model",
+      "caption": "Model destination",
+      "allowNull": false
+    }
+  ],
+  "mixins": {
+      "mStorage": {}
+  }
+}
