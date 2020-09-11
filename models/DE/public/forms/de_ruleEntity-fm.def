@@ -1,0 +1,6 @@
+// @! "do not remove comments below unless you know what you do!"
+// @isDefault "false"
+// @entity "de_ruleEntity"
+// @formType "vue"
+// @caption "Rules for entities"
+// @description "Rules for entities"
