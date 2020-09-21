@@ -1,0 +1,15 @@
+{
+  "caption": "Атрибут",
+  "description": "Атрибут",
+  "attributes": [
+    {
+      "name": "name",
+      "caption": "Ім'я",
+      "description": "Ім'я"
+    },
+    {
+      "name": "parentEntity",
+      "caption": "Батьківська сутність"
+    }
+  ]
+}

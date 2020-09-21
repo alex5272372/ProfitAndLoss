@@ -1,0 +1,15 @@
+{
+  "caption": "Сутність",
+  "description": "Сутність",
+  "attributes": [
+    {
+      "name": "name",
+      "caption": "Ім'я",
+      "description": "Ім'я"
+    },
+    {
+      "name": "parentModel",
+      "caption": "Батьківська модель"
+    }
+  ]
+}

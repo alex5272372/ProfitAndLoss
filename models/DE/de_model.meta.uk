@@ -1,0 +1,11 @@
+{
+  "caption": "Модель",
+  "description": "Модель",
+  "attributes": [
+    {
+      "name": "name",
+      "caption": "Ім'я",
+      "description": "Ім'я"
+    }
+  ]
+}

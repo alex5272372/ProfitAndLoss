@@ -1,0 +1,19 @@
+{
+  "caption": "Правило для моделі",
+  "description": "Правило для моделі",
+  "attributes": [
+    {
+      "name": "name",
+      "caption": "Ім'я",
+      "description": "Ім'я"
+    },
+    {
+      "name": "modelSource",
+      "caption": "Модель джерела"
+    },
+    {
+      "name": "modelDestination",
+      "caption": "Модель призначення"
+    }
+  ]
+}

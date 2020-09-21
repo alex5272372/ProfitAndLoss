@@ -1,0 +1,23 @@
+{
+  "caption": "Правило для атрибута",
+  "description": "Правило для атрибута",
+  "attributes": [
+    {
+      "name": "name",
+      "caption": "Ім'я",
+      "description": "Ім'я"
+    },
+    {
+      "name": "parentRuleEntity",
+      "caption": "Батьківське правило для сутності"
+    },
+    {
+      "name": "attributeSource",
+      "caption": "Атрибут джерела"
+    },
+    {
+      "name": "attributeDestination",
+      "caption": "Атрибут призначення"
+    }
+  ]
+}

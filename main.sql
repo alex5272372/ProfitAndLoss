@@ -32,9 +32,15 @@ create table cdn_adminunit(
 	parentAdminUnitID BIGINT null,
 	code VARCHAR(16) not null,
 	name VARCHAR(128) not null,
+	name_ru VARCHAR(128) not null,
+	name_uk VARCHAR(128) not null,
 	fullName VARCHAR(255) null,
+	fullName_ru VARCHAR(255) null,
+	fullName_uk VARCHAR(255) null,
 	adminUnitType VARCHAR(32) not null,
 	caption VARCHAR(1024) null,
+	caption_ru VARCHAR(1024) null,
+	caption_uk VARCHAR(1024) null,
 	mi_unityEntity VARCHAR(64) not null,
 	mi_owner BIGINT not null,
 	mi_createDate TIMESTAMP default timezone('utc'::text, now()) not null,
@@ -50,7 +56,11 @@ create table cdn_bank(
 	MFO VARCHAR(16) not null,
 	code VARCHAR(16) null,
 	name VARCHAR(128) not null,
+	name_ru VARCHAR(128) not null,
+	name_uk VARCHAR(128) not null,
 	fullName VARCHAR(128) not null,
+	fullName_ru VARCHAR(128) not null,
+	fullName_uk VARCHAR(128) not null,
 	phones VARCHAR(255) null,
 	address VARCHAR(255) null,
 	countryID BIGINT null,
@@ -71,6 +81,8 @@ create table cdn_building(
 	postIndexID BIGINT not null,
 	code VARCHAR(20) not null,
 	description VARCHAR(255) null,
+	description_ru VARCHAR(255) null,
+	description_uk VARCHAR(255) null,
 	buildingType VARCHAR(32) default 'HOUSE' not null,
 	mi_data_id BIGINT not null,
 	mi_dateFrom TIMESTAMP not null,
@@ -89,8 +101,14 @@ create table cdn_city(
 	parentAdminUnitID BIGINT not null,
 	code VARCHAR(16) not null,
 	name VARCHAR(128) not null,
+	name_ru VARCHAR(128) not null,
+	name_uk VARCHAR(128) not null,
 	caption VARCHAR(255) null,
+	caption_ru VARCHAR(255) null,
+	caption_uk VARCHAR(255) null,
 	description VARCHAR(255) null,
+	description_ru VARCHAR(255) null,
+	description_uk VARCHAR(255) null,
 	postalCode VARCHAR(64) null,
 	phoneCode VARCHAR(64) null,
 	cityTypeID BIGINT null,
@@ -107,6 +125,8 @@ create table cdn_citytype(
 	ID BIGINT not null,
 	code VARCHAR(16) not null,
 	name VARCHAR(128) not null,
+	name_ru VARCHAR(128) not null,
+	name_uk VARCHAR(128) not null,
 	mi_owner BIGINT not null,
 	mi_createDate TIMESTAMP default timezone('utc'::text, now()) not null,
 	mi_createUser BIGINT not null,
@@ -120,7 +140,11 @@ create table cdn_classifier(
 	ID BIGINT not null,
 	code VARCHAR(255) not null,
 	name VARCHAR(255) not null,
+	name_ru VARCHAR(255) not null,
+	name_uk VARCHAR(255) not null,
 	description VARCHAR(255) null,
+	description_ru VARCHAR(255) null,
+	description_uk VARCHAR(255) null,
 	orderByAttr VARCHAR(32) default 'code' null,
 	mi_owner BIGINT not null,
 	mi_createDate TIMESTAMP default timezone('utc'::text, now()) not null,
@@ -135,6 +159,8 @@ create table cdn_classifieritem(
 	ID BIGINT not null,
 	code VARCHAR(255) not null,
 	name VARCHAR(255) not null,
+	name_ru VARCHAR(255) not null,
+	name_uk VARCHAR(255) not null,
 	classifierID BIGINT not null,
 	parentID BIGINT null,
 	hierarchyLevel INTEGER null,
@@ -166,6 +192,8 @@ create table cdn_contacttype(
 	ID BIGINT not null,
 	code VARCHAR(16) not null,
 	name VARCHAR(128) not null,
+	name_ru VARCHAR(128) not null,
+	name_uk VARCHAR(128) not null,
 	mi_owner BIGINT not null,
 	mi_createDate TIMESTAMP default timezone('utc'::text, now()) not null,
 	mi_createUser BIGINT not null,
@@ -179,7 +207,11 @@ create table cdn_corrindex(
 	ID BIGINT not null,
 	code VARCHAR(16) not null,
 	name VARCHAR(128) not null,
+	name_ru VARCHAR(128) not null,
+	name_uk VARCHAR(128) not null,
 	fullName VARCHAR(255) not null,
+	fullName_ru VARCHAR(255) not null,
+	fullName_uk VARCHAR(255) not null,
 	mi_owner BIGINT not null,
 	mi_createDate TIMESTAMP default timezone('utc'::text, now()) not null,
 	mi_createUser BIGINT not null,
@@ -193,11 +225,17 @@ create table cdn_country(
 	ID BIGINT not null,
 	code VARCHAR(16) not null,
 	name VARCHAR(128) not null,
+	name_ru VARCHAR(128) not null,
+	name_uk VARCHAR(128) not null,
 	fullName VARCHAR(255) not null,
+	fullName_ru VARCHAR(255) not null,
+	fullName_uk VARCHAR(255) not null,
 	intCode INTEGER not null,
 	symbol2 VARCHAR(2) not null,
 	symbol3 VARCHAR(3) not null,
 	description VARCHAR(255) null,
+	description_ru VARCHAR(255) null,
+	description_uk VARCHAR(255) null,
 	phoneCode VARCHAR(64) null,
 	currencyID BIGINT null,
 	capitalID BIGINT null,
@@ -215,8 +253,12 @@ create table cdn_currency(
 	intCode INTEGER not null,
 	code3 VARCHAR(3) not null,
 	name VARCHAR(65) not null,
+	name_ru VARCHAR(65) not null,
+	name_uk VARCHAR(65) not null,
 	curMult INTEGER default 100 not null,
 	description VARCHAR(128) not null,
+	description_ru VARCHAR(128) not null,
+	description_uk VARCHAR(128) not null,
 	mi_owner BIGINT not null,
 	mi_createDate TIMESTAMP default timezone('utc'::text, now()) not null,
 	mi_createUser BIGINT not null,
@@ -230,12 +272,26 @@ create table cdn_department(
 	ID BIGINT not null,
 	code VARCHAR(16) null,
 	name VARCHAR(128) not null,
+	name_ru VARCHAR(128) not null,
+	name_uk VARCHAR(128) not null,
 	fullName VARCHAR(255) null,
+	fullName_ru VARCHAR(255) null,
+	fullName_uk VARCHAR(255) null,
 	description VARCHAR(255) null,
+	description_ru VARCHAR(255) null,
+	description_uk VARCHAR(255) null,
 	nameGen VARCHAR(128) null,
+	nameGen_ru VARCHAR(128) null,
+	nameGen_uk VARCHAR(128) null,
 	nameDat VARCHAR(128) null,
+	nameDat_ru VARCHAR(128) null,
+	nameDat_uk VARCHAR(128) null,
 	fullNameGen VARCHAR(255) null,
+	fullNameGen_ru VARCHAR(255) null,
+	fullNameGen_uk VARCHAR(255) null,
 	fullNameDat VARCHAR(255) null,
+	fullNameDat_ru VARCHAR(255) null,
+	fullNameDat_uk VARCHAR(255) null,
 	depTypeID BIGINT null,
 	organizationID BIGINT null,
 	mi_data_id BIGINT not null,
@@ -254,6 +310,8 @@ create table cdn_deptype(
 	ID BIGINT not null,
 	code VARCHAR(32) not null,
 	name VARCHAR(100) not null,
+	name_ru VARCHAR(100) not null,
+	name_uk VARCHAR(100) not null,
 	mi_owner BIGINT not null,
 	mi_createDate TIMESTAMP default timezone('utc'::text, now()) not null,
 	mi_createUser BIGINT not null,
@@ -266,30 +324,72 @@ create table cdn_deptype(
 create table cdn_employee(
 	ID BIGINT not null,
 	lastName VARCHAR(128) not null,
+	lastName_ru VARCHAR(128) not null,
+	lastName_uk VARCHAR(128) not null,
 	firstName VARCHAR(128) not null,
+	firstName_ru VARCHAR(128) not null,
+	firstName_uk VARCHAR(128) not null,
 	middleName VARCHAR(128) null,
+	middleName_ru VARCHAR(128) null,
+	middleName_uk VARCHAR(128) null,
 	description VARCHAR(255) null,
+	description_ru VARCHAR(255) null,
+	description_uk VARCHAR(255) null,
 	sexType VARCHAR(32) default '?' not null,
 	uniqNum VARCHAR(255) null,
 	suffix VARCHAR(30) null,
+	suffix_ru VARCHAR(30) null,
+	suffix_uk VARCHAR(30) null,
 	shortFIO VARCHAR(100) not null,
+	shortFIO_ru VARCHAR(100) not null,
+	shortFIO_uk VARCHAR(100) not null,
 	fullFIO VARCHAR(100) not null,
+	fullFIO_ru VARCHAR(100) not null,
+	fullFIO_uk VARCHAR(100) not null,
 	apply VARCHAR(100) null,
+	apply_ru VARCHAR(100) null,
+	apply_uk VARCHAR(100) null,
 	lastNameGen VARCHAR(128) null,
+	lastNameGen_ru VARCHAR(128) null,
+	lastNameGen_uk VARCHAR(128) null,
 	lastNameDat VARCHAR(128) null,
+	lastNameDat_ru VARCHAR(128) null,
+	lastNameDat_uk VARCHAR(128) null,
 	firstNameGen VARCHAR(128) null,
+	firstNameGen_ru VARCHAR(128) null,
+	firstNameGen_uk VARCHAR(128) null,
 	firstNameDat VARCHAR(128) null,
+	firstNameDat_ru VARCHAR(128) null,
+	firstNameDat_uk VARCHAR(128) null,
 	middleNameGen VARCHAR(128) null,
+	middleNameGen_ru VARCHAR(128) null,
+	middleNameGen_uk VARCHAR(128) null,
 	middleNameDat VARCHAR(128) null,
+	middleNameDat_ru VARCHAR(128) null,
+	middleNameDat_uk VARCHAR(128) null,
 	shortFIOGen VARCHAR(256) null,
+	shortFIOGen_ru VARCHAR(256) null,
+	shortFIOGen_uk VARCHAR(256) null,
 	shortFIODat VARCHAR(256) null,
+	shortFIODat_ru VARCHAR(256) null,
+	shortFIODat_uk VARCHAR(256) null,
 	fullFIOGen VARCHAR(512) null,
+	fullFIOGen_ru VARCHAR(512) null,
+	fullFIOGen_uk VARCHAR(512) null,
 	fullFIODat VARCHAR(512) null,
+	fullFIODat_ru VARCHAR(512) null,
+	fullFIODat_uk VARCHAR(512) null,
 	applyGen VARCHAR(100) null,
+	applyGen_ru VARCHAR(100) null,
+	applyGen_uk VARCHAR(100) null,
 	applyDat VARCHAR(100) null,
+	applyDat_ru VARCHAR(100) null,
+	applyDat_uk VARCHAR(100) null,
 	departmentID BIGINT null,
 	organizationID BIGINT not null,
 	addrText TEXT null,
+	addrText_ru TEXT null,
+	addrText_uk TEXT null,
 	mi_data_id BIGINT not null,
 	mi_dateFrom TIMESTAMP not null,
 	mi_dateTo TIMESTAMP not null,
@@ -306,6 +406,8 @@ create table cdn_language(
 	ID BIGINT not null,
 	code VARCHAR(255) not null,
 	languageName VARCHAR(255) not null,
+	languageName_ru VARCHAR(255) not null,
+	languageName_uk VARCHAR(255) not null,
 	nativeName VARCHAR(255) not null,
 	isRTL SMALLINT default 0 not null,
 	mi_owner BIGINT not null,
@@ -321,8 +423,14 @@ create table cdn_nationality(
 	ID BIGINT not null,
 	code VARCHAR(16) not null,
 	name VARCHAR(128) not null,
+	name_ru VARCHAR(128) not null,
+	name_uk VARCHAR(128) not null,
 	nameM VARCHAR(128) null,
+	nameM_ru VARCHAR(128) null,
+	nameM_uk VARCHAR(128) null,
 	nameF VARCHAR(128) null,
+	nameF_ru VARCHAR(128) null,
+	nameF_uk VARCHAR(128) null,
 	mi_owner BIGINT not null,
 	mi_createDate TIMESTAMP default timezone('utc'::text, now()) not null,
 	mi_createUser BIGINT not null,
@@ -356,17 +464,35 @@ create table cdn_organization(
 	taxCode VARCHAR(32) null,
 	vatCode VARCHAR(32) null,
 	name VARCHAR(128) not null,
+	name_ru VARCHAR(128) not null,
+	name_uk VARCHAR(128) not null,
 	fullName VARCHAR(255) not null,
+	fullName_ru VARCHAR(255) not null,
+	fullName_uk VARCHAR(255) not null,
 	nameGen VARCHAR(128) null,
+	nameGen_ru VARCHAR(128) null,
+	nameGen_uk VARCHAR(128) null,
 	nameDat VARCHAR(128) null,
+	nameDat_ru VARCHAR(128) null,
+	nameDat_uk VARCHAR(128) null,
 	fullNameGen VARCHAR(255) null,
+	fullNameGen_ru VARCHAR(255) null,
+	fullNameGen_uk VARCHAR(255) null,
 	fullNameDat VARCHAR(255) null,
+	fullNameDat_ru VARCHAR(255) null,
+	fullNameDat_uk VARCHAR(255) null,
 	description VARCHAR(255) null,
+	description_ru VARCHAR(255) null,
+	description_uk VARCHAR(255) null,
 	orgBusinessTypeID BIGINT null,
 	orgOwnershipTypeID BIGINT null,
 	corrIndexID BIGINT null,
 	addrText TEXT null,
+	addrText_ru TEXT null,
+	addrText_uk TEXT null,
 	caption VARCHAR(255) null,
+	caption_ru VARCHAR(255) null,
+	caption_uk VARCHAR(255) null,
 	mi_data_id BIGINT not null,
 	mi_dateFrom TIMESTAMP not null,
 	mi_dateTo TIMESTAMP not null,
@@ -383,8 +509,14 @@ create table cdn_orgbusinesstype(
 	ID BIGINT not null,
 	code VARCHAR(32) not null,
 	shortName VARCHAR(32) null,
+	shortName_ru VARCHAR(32) null,
+	shortName_uk VARCHAR(32) null,
 	name VARCHAR(100) not null,
+	name_ru VARCHAR(100) not null,
+	name_uk VARCHAR(100) not null,
 	fullName VARCHAR(255) null,
+	fullName_ru VARCHAR(255) null,
+	fullName_uk VARCHAR(255) null,
 	isGovAuthority SMALLINT default 0 not null,
 	mi_owner BIGINT not null,
 	mi_createDate TIMESTAMP default timezone('utc'::text, now()) not null,
@@ -399,8 +531,14 @@ create table cdn_orgownershiptype(
 	ID BIGINT not null,
 	code VARCHAR(32) not null,
 	shortName VARCHAR(32) null,
+	shortName_ru VARCHAR(32) null,
+	shortName_uk VARCHAR(32) null,
 	name VARCHAR(100) not null,
+	name_ru VARCHAR(100) not null,
+	name_uk VARCHAR(100) not null,
 	fullName VARCHAR(255) null,
+	fullName_ru VARCHAR(255) null,
+	fullName_uk VARCHAR(255) null,
 	mi_owner BIGINT not null,
 	mi_createDate TIMESTAMP default timezone('utc'::text, now()) not null,
 	mi_createUser BIGINT not null,
@@ -413,30 +551,74 @@ create table cdn_orgownershiptype(
 create table cdn_person(
 	ID BIGINT not null,
 	lastName VARCHAR(128) not null,
+	lastName_ru VARCHAR(128) not null,
+	lastName_uk VARCHAR(128) not null,
 	firstName VARCHAR(128) not null,
+	firstName_ru VARCHAR(128) not null,
+	firstName_uk VARCHAR(128) not null,
 	middleName VARCHAR(128) null,
+	middleName_ru VARCHAR(128) null,
+	middleName_uk VARCHAR(128) null,
 	identCard VARCHAR(255) null,
+	identCard_ru VARCHAR(255) null,
+	identCard_uk VARCHAR(255) null,
 	workPlacePos VARCHAR(255) null,
+	workPlacePos_ru VARCHAR(255) null,
+	workPlacePos_uk VARCHAR(255) null,
 	birthDate TIMESTAMP null,
 	description VARCHAR(255) null,
+	description_ru VARCHAR(255) null,
+	description_uk VARCHAR(255) null,
 	sexType VARCHAR(32) default '?' not null,
 	suffix VARCHAR(30) null,
+	suffix_ru VARCHAR(30) null,
+	suffix_uk VARCHAR(30) null,
 	shortFIO VARCHAR(256) null,
+	shortFIO_ru VARCHAR(256) null,
+	shortFIO_uk VARCHAR(256) null,
 	fullFIO VARCHAR(512) not null,
+	fullFIO_ru VARCHAR(512) not null,
+	fullFIO_uk VARCHAR(512) not null,
 	apply VARCHAR(100) null,
+	apply_ru VARCHAR(100) null,
+	apply_uk VARCHAR(100) null,
 	photo VARCHAR(4000) null,
 	lastNameGen VARCHAR(128) null,
+	lastNameGen_ru VARCHAR(128) null,
+	lastNameGen_uk VARCHAR(128) null,
 	lastNameDat VARCHAR(128) null,
+	lastNameDat_ru VARCHAR(128) null,
+	lastNameDat_uk VARCHAR(128) null,
 	firstNameGen VARCHAR(128) null,
+	firstNameGen_ru VARCHAR(128) null,
+	firstNameGen_uk VARCHAR(128) null,
 	firstNameDat VARCHAR(128) null,
+	firstNameDat_ru VARCHAR(128) null,
+	firstNameDat_uk VARCHAR(128) null,
 	middleNameGen VARCHAR(128) null,
+	middleNameGen_ru VARCHAR(128) null,
+	middleNameGen_uk VARCHAR(128) null,
 	middleNameDat VARCHAR(128) null,
+	middleNameDat_ru VARCHAR(128) null,
+	middleNameDat_uk VARCHAR(128) null,
 	shortFIOGen VARCHAR(256) null,
+	shortFIOGen_ru VARCHAR(256) null,
+	shortFIOGen_uk VARCHAR(256) null,
 	shortFIODat VARCHAR(256) null,
+	shortFIODat_ru VARCHAR(256) null,
+	shortFIODat_uk VARCHAR(256) null,
 	fullFIOGen VARCHAR(512) null,
+	fullFIOGen_ru VARCHAR(512) null,
+	fullFIOGen_uk VARCHAR(512) null,
 	fullFIODat VARCHAR(512) null,
+	fullFIODat_ru VARCHAR(512) null,
+	fullFIODat_uk VARCHAR(512) null,
 	applyGen VARCHAR(100) null,
+	applyGen_ru VARCHAR(100) null,
+	applyGen_uk VARCHAR(100) null,
 	applyDat VARCHAR(100) null,
+	applyDat_ru VARCHAR(100) null,
+	applyDat_uk VARCHAR(100) null,
 	regionID BIGINT null,
 	socialstatusID BIGINT null,
 	categoryID BIGINT null,
@@ -459,6 +641,8 @@ create table cdn_personcategory(
 	ID BIGINT not null,
 	code VARCHAR(32) not null,
 	name VARCHAR(100) not null,
+	name_ru VARCHAR(100) not null,
+	name_uk VARCHAR(100) not null,
 	mi_owner BIGINT not null,
 	mi_createDate TIMESTAMP default timezone('utc'::text, now()) not null,
 	mi_createUser BIGINT not null,
@@ -472,6 +656,8 @@ create table cdn_personclass(
 	ID BIGINT not null,
 	code VARCHAR(32) not null,
 	name VARCHAR(100) not null,
+	name_ru VARCHAR(100) not null,
+	name_uk VARCHAR(100) not null,
 	mi_owner BIGINT not null,
 	mi_createDate TIMESTAMP default timezone('utc'::text, now()) not null,
 	mi_createUser BIGINT not null,
@@ -485,6 +671,8 @@ create table cdn_personsocialstatus(
 	ID BIGINT not null,
 	code VARCHAR(32) not null,
 	name VARCHAR(100) not null,
+	name_ru VARCHAR(100) not null,
+	name_uk VARCHAR(100) not null,
 	mi_owner BIGINT not null,
 	mi_createDate TIMESTAMP default timezone('utc'::text, now()) not null,
 	mi_createUser BIGINT not null,
@@ -499,6 +687,8 @@ create table cdn_postindex(
 	code VARCHAR(6) not null,
 	streetID BIGINT not null,
 	description VARCHAR(255) not null,
+	description_ru VARCHAR(255) not null,
+	description_uk VARCHAR(255) not null,
 	mi_owner BIGINT not null,
 	mi_createDate TIMESTAMP default timezone('utc'::text, now()) not null,
 	mi_createUser BIGINT not null,
@@ -512,6 +702,8 @@ create table cdn_profession(
 	ID BIGINT not null,
 	code VARCHAR(16) default '----' not null,
 	name VARCHAR(128) not null,
+	name_ru VARCHAR(128) not null,
+	name_uk VARCHAR(128) not null,
 	mi_owner BIGINT not null,
 	mi_createDate TIMESTAMP default timezone('utc'::text, now()) not null,
 	mi_createUser BIGINT not null,
@@ -527,9 +719,17 @@ create table cdn_region(
 	code VARCHAR(16) not null,
 	regionTypeID BIGINT null,
 	name VARCHAR(128) not null,
+	name_ru VARCHAR(128) not null,
+	name_uk VARCHAR(128) not null,
 	caption VARCHAR(255) null,
+	caption_ru VARCHAR(255) null,
+	caption_uk VARCHAR(255) null,
 	fullName VARCHAR(255) not null,
+	fullName_ru VARCHAR(255) not null,
+	fullName_uk VARCHAR(255) not null,
 	description VARCHAR(255) null,
+	description_ru VARCHAR(255) null,
+	description_uk VARCHAR(255) null,
 	phoneCode VARCHAR(64) null,
 	centerID BIGINT null,
 	mi_data_id BIGINT not null,
@@ -548,6 +748,8 @@ create table cdn_regiontype(
 	ID BIGINT not null,
 	code VARCHAR(16) not null,
 	name VARCHAR(128) not null,
+	name_ru VARCHAR(128) not null,
+	name_uk VARCHAR(128) not null,
 	mi_owner BIGINT not null,
 	mi_createDate TIMESTAMP default timezone('utc'::text, now()) not null,
 	mi_createUser BIGINT not null,
@@ -561,6 +763,8 @@ create table cdn_staffunittype(
 	ID BIGINT not null,
 	code VARCHAR(16) not null,
 	name VARCHAR(128) not null,
+	name_ru VARCHAR(128) not null,
+	name_uk VARCHAR(128) not null,
 	mi_owner BIGINT not null,
 	mi_createDate TIMESTAMP default timezone('utc'::text, now()) not null,
 	mi_createUser BIGINT not null,
@@ -573,7 +777,11 @@ create table cdn_staffunittype(
 create table cdn_street(
 	ID BIGINT not null,
 	name VARCHAR(128) not null,
+	name_ru VARCHAR(128) not null,
+	name_uk VARCHAR(128) not null,
 	fullName VARCHAR(128) not null,
+	fullName_ru VARCHAR(128) not null,
+	fullName_uk VARCHAR(128) not null,
 	code VARCHAR(6) null,
 	streetType VARCHAR(32) null,
 	cityID BIGINT null,
@@ -634,15 +842,31 @@ create table org_department(
 	parentID BIGINT null,
 	code VARCHAR(16) default '----' not null,
 	name VARCHAR(256) not null,
+	name_ru VARCHAR(256) not null,
+	name_uk VARCHAR(256) not null,
 	fullName VARCHAR(500) not null,
+	fullName_ru VARCHAR(500) not null,
+	fullName_uk VARCHAR(500) not null,
 	description VARCHAR(290) null,
+	description_ru VARCHAR(290) null,
+	description_uk VARCHAR(290) null,
 	nameGen VARCHAR(256) null,
+	nameGen_ru VARCHAR(256) null,
+	nameGen_uk VARCHAR(256) null,
 	nameDat VARCHAR(256) null,
+	nameDat_ru VARCHAR(256) null,
+	nameDat_uk VARCHAR(256) null,
 	fullNameGen VARCHAR(500) null,
+	fullNameGen_ru VARCHAR(500) null,
+	fullNameGen_uk VARCHAR(500) null,
 	fullNameDat VARCHAR(500) null,
+	fullNameDat_ru VARCHAR(500) null,
+	fullNameDat_uk VARCHAR(500) null,
 	depTypeID BIGINT null,
 	isClerical SMALLINT default 0 not null,
 	caption VARCHAR(512) not null,
+	caption_ru VARCHAR(512) not null,
+	caption_uk VARCHAR(512) not null,
 	mi_data_id BIGINT not null,
 	mi_dateFrom TIMESTAMP not null,
 	mi_dateTo TIMESTAMP not null,
@@ -675,33 +899,85 @@ create table org_employee(
 	code VARCHAR(20) not null,
 	userID BIGINT null,
 	lastName VARCHAR(128) not null,
+	lastName_ru VARCHAR(128) not null,
+	lastName_uk VARCHAR(128) not null,
 	firstName VARCHAR(128) not null,
+	firstName_ru VARCHAR(128) not null,
+	firstName_uk VARCHAR(128) not null,
 	middleName VARCHAR(128) null,
+	middleName_ru VARCHAR(128) null,
+	middleName_uk VARCHAR(128) null,
 	birthDate TIMESTAMP null,
 	description VARCHAR(255) null,
+	description_ru VARCHAR(255) null,
+	description_uk VARCHAR(255) null,
 	sexType VARCHAR(32) not null,
 	suffix VARCHAR(30) null,
+	suffix_ru VARCHAR(30) null,
+	suffix_uk VARCHAR(30) null,
 	shortFIO VARCHAR(256) null,
+	shortFIO_ru VARCHAR(256) null,
+	shortFIO_uk VARCHAR(256) null,
 	fullFIO VARCHAR(512) not null,
+	fullFIO_ru VARCHAR(512) not null,
+	fullFIO_uk VARCHAR(512) not null,
 	apply VARCHAR(100) null,
+	apply_ru VARCHAR(100) null,
+	apply_uk VARCHAR(100) null,
 	lastNameGen VARCHAR(128) null,
+	lastNameGen_ru VARCHAR(128) null,
+	lastNameGen_uk VARCHAR(128) null,
 	lastNameDat VARCHAR(128) null,
+	lastNameDat_ru VARCHAR(128) null,
+	lastNameDat_uk VARCHAR(128) null,
 	lastNameObj VARCHAR(128) null,
+	lastNameObj_ru VARCHAR(128) null,
+	lastNameObj_uk VARCHAR(128) null,
 	firstNameGen VARCHAR(128) null,
+	firstNameGen_ru VARCHAR(128) null,
+	firstNameGen_uk VARCHAR(128) null,
 	firstNameDat VARCHAR(128) null,
+	firstNameDat_ru VARCHAR(128) null,
+	firstNameDat_uk VARCHAR(128) null,
 	firstNameObj VARCHAR(128) null,
+	firstNameObj_ru VARCHAR(128) null,
+	firstNameObj_uk VARCHAR(128) null,
 	middleNameGen VARCHAR(128) null,
+	middleNameGen_ru VARCHAR(128) null,
+	middleNameGen_uk VARCHAR(128) null,
 	middleNameDat VARCHAR(128) null,
+	middleNameDat_ru VARCHAR(128) null,
+	middleNameDat_uk VARCHAR(128) null,
 	middleNameObj VARCHAR(128) null,
+	middleNameObj_ru VARCHAR(128) null,
+	middleNameObj_uk VARCHAR(128) null,
 	shortFIOGen VARCHAR(256) null,
+	shortFIOGen_ru VARCHAR(256) null,
+	shortFIOGen_uk VARCHAR(256) null,
 	shortFIODat VARCHAR(256) null,
+	shortFIODat_ru VARCHAR(256) null,
+	shortFIODat_uk VARCHAR(256) null,
 	shortFIOObj VARCHAR(256) null,
+	shortFIOObj_ru VARCHAR(256) null,
+	shortFIOObj_uk VARCHAR(256) null,
 	fullFIOGen VARCHAR(512) null,
+	fullFIOGen_ru VARCHAR(512) null,
+	fullFIOGen_uk VARCHAR(512) null,
 	fullFIODat VARCHAR(512) null,
+	fullFIODat_ru VARCHAR(512) null,
+	fullFIODat_uk VARCHAR(512) null,
 	fullFIOObj VARCHAR(512) null,
+	fullFIOObj_ru VARCHAR(512) null,
+	fullFIOObj_uk VARCHAR(512) null,
 	applyGen VARCHAR(100) null,
+	applyGen_ru VARCHAR(100) null,
+	applyGen_uk VARCHAR(100) null,
 	applyDat VARCHAR(100) null,
+	applyDat_ru VARCHAR(100) null,
+	applyDat_uk VARCHAR(100) null,
 	applyObj VARCHAR(100) null,
+	applyObj_ru VARCHAR(100) null,
+	applyObj_uk VARCHAR(100) null,
 	facsimile VARCHAR(4000) null,
 	mi_data_id BIGINT not null,
 	mi_dateFrom TIMESTAMP not null,
@@ -722,7 +998,11 @@ create table org_employeeonstaff(
 	staffUnitID BIGINT not null,
 	employeeOnStaffType VARCHAR(32) default 'PERMANENT' not null,
 	description VARCHAR(255) null,
+	description_ru VARCHAR(255) null,
+	description_uk VARCHAR(255) null,
 	caption VARCHAR(1024) null,
+	caption_ru VARCHAR(1024) null,
+	caption_uk VARCHAR(1024) null,
 	mi_data_id BIGINT not null,
 	mi_dateFrom TIMESTAMP not null,
 	mi_dateTo TIMESTAMP not null,
@@ -752,8 +1032,14 @@ create table org_execgroup(
 	parentID BIGINT not null,
 	code VARCHAR(16) not null,
 	name VARCHAR(254) not null,
+	name_ru VARCHAR(254) not null,
+	name_uk VARCHAR(254) not null,
 	nameGen VARCHAR(254) null,
+	nameGen_ru VARCHAR(254) null,
+	nameGen_uk VARCHAR(254) null,
 	nameDat VARCHAR(254) null,
+	nameDat_ru VARCHAR(254) null,
+	nameDat_uk VARCHAR(254) null,
 	mi_data_id BIGINT not null,
 	mi_dateFrom TIMESTAMP not null,
 	mi_dateTo TIMESTAMP not null,
@@ -802,12 +1088,26 @@ create table org_organization(
 	taxCode VARCHAR(32) null,
 	vatCode VARCHAR(32) null,
 	name VARCHAR(256) not null,
+	name_ru VARCHAR(256) not null,
+	name_uk VARCHAR(256) not null,
 	fullName VARCHAR(500) not null,
+	fullName_ru VARCHAR(500) not null,
+	fullName_uk VARCHAR(500) not null,
 	nameGen VARCHAR(256) null,
+	nameGen_ru VARCHAR(256) null,
+	nameGen_uk VARCHAR(256) null,
 	nameDat VARCHAR(256) null,
+	nameDat_ru VARCHAR(256) null,
+	nameDat_uk VARCHAR(256) null,
 	fullNameGen VARCHAR(500) null,
+	fullNameGen_ru VARCHAR(500) null,
+	fullNameGen_uk VARCHAR(500) null,
 	fullNameDat VARCHAR(500) null,
+	fullNameDat_ru VARCHAR(500) null,
+	fullNameDat_uk VARCHAR(500) null,
 	description VARCHAR(290) null,
+	description_ru VARCHAR(290) null,
+	description_uk VARCHAR(290) null,
 	orgBusinessTypeID BIGINT null,
 	orgOwnershipTypeID BIGINT null,
 	mi_data_id BIGINT not null,
@@ -826,11 +1126,23 @@ create table org_profession(
 	ID BIGINT not null,
 	code VARCHAR(16) default '----' not null,
 	name VARCHAR(128) not null,
+	name_ru VARCHAR(128) not null,
+	name_uk VARCHAR(128) not null,
 	fullName VARCHAR(300) not null,
+	fullName_ru VARCHAR(300) not null,
+	fullName_uk VARCHAR(300) not null,
 	nameGen VARCHAR(128) null,
+	nameGen_ru VARCHAR(128) null,
+	nameGen_uk VARCHAR(128) null,
 	nameDat VARCHAR(128) null,
+	nameDat_ru VARCHAR(128) null,
+	nameDat_uk VARCHAR(128) null,
 	fullNameGen VARCHAR(300) null,
+	fullNameGen_ru VARCHAR(300) null,
+	fullNameGen_uk VARCHAR(300) null,
 	fullNameDat VARCHAR(300) null,
+	fullNameDat_ru VARCHAR(300) null,
+	fullNameDat_uk VARCHAR(300) null,
 	mi_owner BIGINT not null,
 	mi_createDate TIMESTAMP default timezone('utc'::text, now()) not null,
 	mi_createUser BIGINT not null,
@@ -845,13 +1157,29 @@ create table org_staffunit(
 	parentID BIGINT not null,
 	code VARCHAR(16) default '----' not null,
 	name VARCHAR(128) not null,
+	name_ru VARCHAR(128) not null,
+	name_uk VARCHAR(128) not null,
 	fullName VARCHAR(300) not null,
+	fullName_ru VARCHAR(300) not null,
+	fullName_uk VARCHAR(300) not null,
 	description VARCHAR(255) null,
+	description_ru VARCHAR(255) null,
+	description_uk VARCHAR(255) null,
 	nameGen VARCHAR(128) null,
+	nameGen_ru VARCHAR(128) null,
+	nameGen_uk VARCHAR(128) null,
 	nameDat VARCHAR(128) null,
+	nameDat_ru VARCHAR(128) null,
+	nameDat_uk VARCHAR(128) null,
 	fullNameGen VARCHAR(300) null,
+	fullNameGen_ru VARCHAR(300) null,
+	fullNameGen_uk VARCHAR(300) null,
 	fullNameDat VARCHAR(300) null,
+	fullNameDat_ru VARCHAR(300) null,
+	fullNameDat_uk VARCHAR(300) null,
 	caption VARCHAR(1024) not null,
+	caption_ru VARCHAR(1024) not null,
+	caption_uk VARCHAR(1024) not null,
 	professionExtID BIGINT null,
 	professionID BIGINT not null,
 	staffUnitTypeID BIGINT not null,
@@ -874,6 +1202,8 @@ create table org_unit(
 	parentID BIGINT null,
 	code VARCHAR(16) not null,
 	caption VARCHAR(1024) not null,
+	caption_ru VARCHAR(1024) not null,
+	caption_uk VARCHAR(1024) not null,
 	unitType VARCHAR(32) not null,
 	mi_treePath VARCHAR(450) not null,
 	mi_data_id BIGINT not null,
@@ -941,6 +1271,8 @@ create table uba_group(
 	ID BIGINT not null,
 	code VARCHAR(50) not null,
 	name VARCHAR(128) not null,
+	name_ru VARCHAR(128) not null,
+	name_uk VARCHAR(128) not null,
 	description VARCHAR(256) null,
 	mi_owner BIGINT not null,
 	mi_createDate TIMESTAMP default timezone('utc'::text, now()) not null,
@@ -1017,8 +1349,12 @@ create table uba_usergroup(
 create table ubm_desktop(
 	ID BIGINT not null,
 	caption VARCHAR(255) not null,
+	caption_ru VARCHAR(255) not null,
+	caption_uk VARCHAR(255) not null,
 	code VARCHAR(50) not null,
 	description VARCHAR(255) null,
+	description_ru VARCHAR(255) null,
+	description_uk VARCHAR(255) null,
 	iconCls VARCHAR(255) default 'u-icon-desktop' not null,
 	url VARCHAR(255) null,
 	isDefault SMALLINT default 0 not null,
@@ -1043,7 +1379,11 @@ create table ubm_enum(
 	eGroup VARCHAR(32) not null,
 	code VARCHAR(32) not null,
 	shortName VARCHAR(128) null,
+	shortName_ru VARCHAR(128) null,
+	shortName_uk VARCHAR(128) null,
 	name VARCHAR(255) not null,
+	name_ru VARCHAR(255) not null,
+	name_uk VARCHAR(255) not null,
 	sortOrder INTEGER default 100 not null,
 	mi_owner BIGINT not null,
 	mi_createDate TIMESTAMP default timezone('utc'::text, now()) not null,
@@ -1061,13 +1401,19 @@ create table ubm_navshortcut(
 	code VARCHAR(50) not null,
 	isFolder SMALLINT default 0 not null,
 	caption VARCHAR(255) not null,
+	caption_ru VARCHAR(255) not null,
+	caption_uk VARCHAR(255) not null,
 	cmdCode TEXT null,
 	inWindow SMALLINT default 0 not null,
 	isCollapsed SMALLINT default 0 not null,
 	displayOrder INTEGER default 1000 not null,
 	iconCls VARCHAR(50) null,
 	description VARCHAR(256) null,
+	description_ru VARCHAR(256) null,
+	description_uk VARCHAR(256) null,
 	keywords VARCHAR(512) null,
+	keywords_ru VARCHAR(512) null,
+	keywords_uk VARCHAR(512) null,
 	mi_treePath VARCHAR(450) not null,
 	mi_owner BIGINT not null,
 	mi_createDate TIMESTAMP default timezone('utc'::text, now()) not null,
@@ -1088,6 +1434,8 @@ create table ubm_query(
 	ID BIGINT not null,
 	code VARCHAR(50) not null,
 	name VARCHAR(256) not null,
+	name_ru VARCHAR(256) not null,
+	name_uk VARCHAR(256) not null,
 	ubql JSONB not null,
 	mi_owner BIGINT not null,
 	mi_createDate TIMESTAMP default timezone('utc'::text, now()) not null,
@@ -1173,6 +1521,10 @@ alter table uba_els add mi_modifyDate TIMESTAMP default timezone('utc'::text, no
 --
 alter table uba_els add mi_modifyUser BIGINT null;
 --
+alter table uba_role add description_ru VARCHAR(256);
+--
+alter table uba_role add description_uk VARCHAR(256);
+--
 alter table uba_role add mi_owner BIGINT null;
 --
 alter table uba_role add mi_createDate TIMESTAMP default timezone('utc'::text, now()) not null;
@@ -1182,6 +1534,10 @@ alter table uba_role add mi_createUser BIGINT null;
 alter table uba_role add mi_modifyDate TIMESTAMP default timezone('utc'::text, now()) not null;
 --
 alter table uba_role add mi_modifyUser BIGINT null;
+--
+alter table uba_subject add name_ru VARCHAR(256);
+--
+alter table uba_subject add name_uk VARCHAR(256);
 --
 alter table uba_user add firstName VARCHAR(64) null;
 --
@@ -1217,6 +1573,22 @@ alter table uba_userrole add mi_modifyDate TIMESTAMP default timezone('utc'::tex
 --
 alter table uba_userrole add mi_modifyUser BIGINT null;
 --
+alter table ubs_settings add name_ru VARCHAR(150);
+--
+alter table ubs_settings add name_uk VARCHAR(150);
+--
+alter table ubs_settings add description_ru VARCHAR(1024);
+--
+alter table ubs_settings add description_uk VARCHAR(1024);
+--
+alter table ubs_settings add settingValue_ru VARCHAR(2000);
+--
+alter table ubs_settings add settingValue_uk VARCHAR(2000);
+--
+alter table ubs_settings add defaultValue_ru VARCHAR(150);
+--
+alter table ubs_settings add defaultValue_uk VARCHAR(150);
+--
 alter table ubs_settings add mi_owner BIGINT null;
 --
 alter table ubs_settings add mi_createDate TIMESTAMP default timezone('utc'::text, now()) not null;
@@ -1249,11 +1621,19 @@ update uba_els set mi_createUser = (select min(id) from uba_user) where mi_creat
 --
 update uba_els set mi_modifyUser = (select min(id) from uba_user) where mi_modifyUser is null;
 --
+update uba_role set description_ru = description where 1 = 1;
+--
+update uba_role set description_uk = description where 1 = 1;
+--
 update uba_role set mi_owner = (select min(id) from uba_user) where mi_owner is null;
 --
 update uba_role set mi_createUser = (select min(id) from uba_user) where mi_createUser is null;
 --
 update uba_role set mi_modifyUser = (select min(id) from uba_user) where mi_modifyUser is null;
+--
+update uba_subject set name_ru = name where 1 = 1;
+--
+update uba_subject set name_uk = name where 1 = 1;
 --
 update uba_user set mi_owner = ID where mi_owner is null;
 --
@@ -1266,6 +1646,22 @@ update uba_userrole set mi_owner = (select min(id) from uba_user) where mi_owner
 update uba_userrole set mi_createUser = (select min(id) from uba_user) where mi_createUser is null;
 --
 update uba_userrole set mi_modifyUser = (select min(id) from uba_user) where mi_modifyUser is null;
+--
+update ubs_settings set name_ru = name where 1 = 1;
+--
+update ubs_settings set name_uk = name where 1 = 1;
+--
+update ubs_settings set description_ru = description where 1 = 1;
+--
+update ubs_settings set description_uk = description where 1 = 1;
+--
+update ubs_settings set settingValue_ru = settingValue where 1 = 1;
+--
+update ubs_settings set settingValue_uk = settingValue where 1 = 1;
+--
+update ubs_settings set defaultValue_ru = defaultValue where 1 = 1;
+--
+update ubs_settings set defaultValue_uk = defaultValue where 1 = 1;
 --
 update ubs_settings set mi_owner = (select min(id) from uba_user) where mi_owner is null;
 --
@@ -1285,11 +1681,19 @@ alter table uba_els alter column mi_createUser set not null;
 --
 alter table uba_els alter column mi_modifyUser set not null;
 --
+alter table uba_role alter column description_ru set  not null;
+--
+alter table uba_role alter column description_uk set  not null;
+--
 alter table uba_role alter column mi_owner set not null;
 --
 alter table uba_role alter column mi_createUser set not null;
 --
 alter table uba_role alter column mi_modifyUser set not null;
+--
+alter table uba_subject alter column name_ru set  not null;
+--
+alter table uba_subject alter column name_uk set  not null;
 --
 alter table uba_user alter column mi_owner set not null;
 --
@@ -1302,6 +1706,10 @@ alter table uba_userrole alter column mi_owner set not null;
 alter table uba_userrole alter column mi_createUser set not null;
 --
 alter table uba_userrole alter column mi_modifyUser set not null;
+--
+alter table ubs_settings alter column name_ru set  not null;
+--
+alter table ubs_settings alter column name_uk set  not null;
 --
 alter table ubs_settings alter column mi_owner set not null;
 --
@@ -2108,6 +2516,10 @@ create  index IDX_ELS_MI_MODIFYUSER on uba_els(MI_MODIFYUSER);
 create unique index UIDX_GR_CODE on uba_group(CODE);
 --
 create unique index UIDX_GR_NAME on uba_group(NAME);
+--
+create unique index UIDX_GR_NAME_RU on uba_group(NAME_RU);
+--
+create unique index UIDX_GR_NAME_UK on uba_group(NAME_UK);
 --
 create  index IDX_GR_MI_OWNER on uba_group(MI_OWNER);
 --
@@ -3211,11 +3623,23 @@ comment on column cdn_adminunit.code is 'Internal code';
 --
 comment on column cdn_adminunit.name is 'Name';
 --
+comment on column cdn_adminunit.name_ru is 'Name';
+--
+comment on column cdn_adminunit.name_uk is 'Name';
+--
 comment on column cdn_adminunit.fullName is 'Full name';
+--
+comment on column cdn_adminunit.fullName_ru is 'Full name';
+--
+comment on column cdn_adminunit.fullName_uk is 'Full name';
 --
 comment on column cdn_adminunit.adminUnitType is 'Admin unit type';
 --
 comment on column cdn_adminunit.caption is 'Caption';
+--
+comment on column cdn_adminunit.caption_ru is 'Caption';
+--
+comment on column cdn_adminunit.caption_uk is 'Caption';
 --
 comment on column cdn_adminunit.mi_owner is 'Row owner';
 --
@@ -3239,7 +3663,15 @@ comment on column cdn_bank.code is 'Bank organization code';
 --
 comment on column cdn_bank.name is 'Name without quotes and ownership. For searching data.';
 --
+comment on column cdn_bank.name_ru is 'Name without quotes and ownership. For searching data.';
+--
+comment on column cdn_bank.name_uk is 'Name without quotes and ownership. For searching data.';
+--
 comment on column cdn_bank.fullName is 'Full official bank name . For displaying in reports.';
+--
+comment on column cdn_bank.fullName_ru is 'Full official bank name . For displaying in reports.';
+--
+comment on column cdn_bank.fullName_uk is 'Full official bank name . For displaying in reports.';
 --
 comment on column cdn_bank.phones is 'Phones';
 --
@@ -3275,6 +3707,10 @@ comment on column cdn_building.code is 'Code';
 --
 comment on column cdn_building.description is 'Description';
 --
+comment on column cdn_building.description_ru is 'Description';
+--
+comment on column cdn_building.description_uk is 'Description';
+--
 comment on column cdn_building.buildingType is 'Type';
 --
 comment on column cdn_building.mi_owner is 'Row owner';
@@ -3299,9 +3735,21 @@ comment on column cdn_city.code is 'City code';
 --
 comment on column cdn_city.name is 'City name';
 --
+comment on column cdn_city.name_ru is 'City name';
+--
+comment on column cdn_city.name_uk is 'City name';
+--
 comment on column cdn_city.caption is 'Caption';
 --
+comment on column cdn_city.caption_ru is 'Caption';
+--
+comment on column cdn_city.caption_uk is 'Caption';
+--
 comment on column cdn_city.description is 'City description';
+--
+comment on column cdn_city.description_ru is 'City description';
+--
+comment on column cdn_city.description_uk is 'City description';
 --
 comment on column cdn_city.postalCode is 'City postal code';
 --
@@ -3329,6 +3777,10 @@ comment on column cdn_citytype.code is 'Internal code of city type';
 --
 comment on column cdn_citytype.name is 'City type name';
 --
+comment on column cdn_citytype.name_ru is 'City type name';
+--
+comment on column cdn_citytype.name_uk is 'City type name';
+--
 comment on column cdn_citytype.mi_owner is 'Row owner';
 --
 comment on column cdn_citytype.mi_createDate is 'Creation date';
@@ -3349,7 +3801,15 @@ comment on column cdn_classifier.code is 'Code';
 --
 comment on column cdn_classifier.name is 'Name';
 --
+comment on column cdn_classifier.name_ru is 'Name';
+--
+comment on column cdn_classifier.name_uk is 'Name';
+--
 comment on column cdn_classifier.description is 'Description';
+--
+comment on column cdn_classifier.description_ru is 'Description';
+--
+comment on column cdn_classifier.description_uk is 'Description';
 --
 comment on column cdn_classifier.orderByAttr is 'Classifier item sort order';
 --
@@ -3372,6 +3832,10 @@ comment on table cdn_classifieritem is 'Сlassifier Item';
 comment on column cdn_classifieritem.code is 'System code';
 --
 comment on column cdn_classifieritem.name is 'Name';
+--
+comment on column cdn_classifieritem.name_ru is 'Name';
+--
+comment on column cdn_classifieritem.name_uk is 'Name';
 --
 comment on column cdn_classifieritem.classifierID is 'Classifier';
 --
@@ -3421,6 +3885,10 @@ comment on column cdn_contacttype.code is 'Code';
 --
 comment on column cdn_contacttype.name is 'Contact type name';
 --
+comment on column cdn_contacttype.name_ru is 'Contact type name';
+--
+comment on column cdn_contacttype.name_uk is 'Contact type name';
+--
 comment on column cdn_contacttype.mi_owner is 'Row owner';
 --
 comment on column cdn_contacttype.mi_createDate is 'Creation date';
@@ -3441,7 +3909,15 @@ comment on column cdn_corrindex.code is 'Code of correspondent index';
 --
 comment on column cdn_corrindex.name is 'Name of correspondent index';
 --
+comment on column cdn_corrindex.name_ru is 'Name of correspondent index';
+--
+comment on column cdn_corrindex.name_uk is 'Name of correspondent index';
+--
 comment on column cdn_corrindex.fullName is 'Full name of correspondent index';
+--
+comment on column cdn_corrindex.fullName_ru is 'Full name of correspondent index';
+--
+comment on column cdn_corrindex.fullName_uk is 'Full name of correspondent index';
 --
 comment on column cdn_corrindex.mi_owner is 'Row owner';
 --
@@ -3463,7 +3939,15 @@ comment on column cdn_country.code is 'Internal code';
 --
 comment on column cdn_country.name is 'Name of the country';
 --
+comment on column cdn_country.name_ru is 'Name of the country';
+--
+comment on column cdn_country.name_uk is 'Name of the country';
+--
 comment on column cdn_country.fullName is 'Full official name of the country';
+--
+comment on column cdn_country.fullName_ru is 'Full official name of the country';
+--
+comment on column cdn_country.fullName_uk is 'Full official name of the country';
 --
 comment on column cdn_country.intCode is 'Digital code of the country';
 --
@@ -3472,6 +3956,10 @@ comment on column cdn_country.symbol2 is '2-character code of the country by ISO
 comment on column cdn_country.symbol3 is '3-character code of the country by IOC classification';
 --
 comment on column cdn_country.description is 'Country description';
+--
+comment on column cdn_country.description_ru is 'Country description';
+--
+comment on column cdn_country.description_uk is 'Country description';
 --
 comment on column cdn_country.phoneCode is 'Country phone code';
 --
@@ -3501,9 +3989,17 @@ comment on column cdn_currency.code3 is '3-character code of currency';
 --
 comment on column cdn_currency.name is 'Name of currency';
 --
+comment on column cdn_currency.name_ru is 'Name of currency';
+--
+comment on column cdn_currency.name_uk is 'Name of currency';
+--
 comment on column cdn_currency.curMult is 'Default multiplicity';
 --
 comment on column cdn_currency.description is 'Description';
+--
+comment on column cdn_currency.description_ru is 'Description';
+--
+comment on column cdn_currency.description_uk is 'Description';
 --
 comment on column cdn_currency.mi_owner is 'Row owner';
 --
@@ -3525,17 +4021,45 @@ comment on column cdn_department.code is 'Code of the department';
 --
 comment on column cdn_department.name is 'Name of the department';
 --
+comment on column cdn_department.name_ru is 'Name of the department';
+--
+comment on column cdn_department.name_uk is 'Name of the department';
+--
 comment on column cdn_department.fullName is 'Full official name of the department';
+--
+comment on column cdn_department.fullName_ru is 'Full official name of the department';
+--
+comment on column cdn_department.fullName_uk is 'Full official name of the department';
 --
 comment on column cdn_department.description is 'Description of the department';
 --
+comment on column cdn_department.description_ru is 'Description of the department';
+--
+comment on column cdn_department.description_uk is 'Description of the department';
+--
 comment on column cdn_department.nameGen is 'Department name in genitive case';
+--
+comment on column cdn_department.nameGen_ru is 'Department name in genitive case';
+--
+comment on column cdn_department.nameGen_uk is 'Department name in genitive case';
 --
 comment on column cdn_department.nameDat is 'Department name in dative case';
 --
+comment on column cdn_department.nameDat_ru is 'Department name in dative case';
+--
+comment on column cdn_department.nameDat_uk is 'Department name in dative case';
+--
 comment on column cdn_department.fullNameGen is 'Department full official name in genitive case';
 --
+comment on column cdn_department.fullNameGen_ru is 'Department full official name in genitive case';
+--
+comment on column cdn_department.fullNameGen_uk is 'Department full official name in genitive case';
+--
 comment on column cdn_department.fullNameDat is 'Department full official name in dative case';
+--
+comment on column cdn_department.fullNameDat_ru is 'Department full official name in dative case';
+--
+comment on column cdn_department.fullNameDat_uk is 'Department full official name in dative case';
 --
 comment on column cdn_department.depTypeID is 'Type of the department';
 --
@@ -3561,6 +4085,10 @@ comment on column cdn_deptype.code is 'Code of the department type';
 --
 comment on column cdn_deptype.name is 'Name of the department type';
 --
+comment on column cdn_deptype.name_ru is 'Name of the department type';
+--
+comment on column cdn_deptype.name_uk is 'Name of the department type';
+--
 comment on column cdn_deptype.mi_owner is 'Row owner';
 --
 comment on column cdn_deptype.mi_createDate is 'Creation date';
@@ -3579,11 +4107,27 @@ comment on table cdn_employee is 'List of employees of external organizations';
 --
 comment on column cdn_employee.lastName is 'Employee last name';
 --
+comment on column cdn_employee.lastName_ru is 'Employee last name';
+--
+comment on column cdn_employee.lastName_uk is 'Employee last name';
+--
 comment on column cdn_employee.firstName is 'Employee first name';
+--
+comment on column cdn_employee.firstName_ru is 'Employee first name';
+--
+comment on column cdn_employee.firstName_uk is 'Employee first name';
 --
 comment on column cdn_employee.middleName is 'Employee middle name';
 --
+comment on column cdn_employee.middleName_ru is 'Employee middle name';
+--
+comment on column cdn_employee.middleName_uk is 'Employee middle name';
+--
 comment on column cdn_employee.description is 'Employee description';
+--
+comment on column cdn_employee.description_ru is 'Employee description';
+--
+comment on column cdn_employee.description_uk is 'Employee description';
 --
 comment on column cdn_employee.sexType is 'Employee''s gender';
 --
@@ -3591,41 +4135,109 @@ comment on column cdn_employee.uniqNum is 'Employee number';
 --
 comment on column cdn_employee.suffix is 'Suffix';
 --
+comment on column cdn_employee.suffix_ru is 'Suffix';
+--
+comment on column cdn_employee.suffix_uk is 'Suffix';
+--
 comment on column cdn_employee.shortFIO is 'Example: A.O. Ivanov';
+--
+comment on column cdn_employee.shortFIO_ru is 'Example: A.O. Ivanov';
+--
+comment on column cdn_employee.shortFIO_uk is 'Example: A.O. Ivanov';
 --
 comment on column cdn_employee.fullFIO is 'Example: Anton Olegovich Ivanov';
 --
+comment on column cdn_employee.fullFIO_ru is 'Example: Anton Olegovich Ivanov';
+--
+comment on column cdn_employee.fullFIO_uk is 'Example: Anton Olegovich Ivanov';
+--
 comment on column cdn_employee.apply is 'Describes how to treat to this person';
+--
+comment on column cdn_employee.apply_ru is 'Describes how to treat to this person';
+--
+comment on column cdn_employee.apply_uk is 'Describes how to treat to this person';
 --
 comment on column cdn_employee.lastNameGen is 'Employee last name in genitive case';
 --
+comment on column cdn_employee.lastNameGen_ru is 'Employee last name in genitive case';
+--
+comment on column cdn_employee.lastNameGen_uk is 'Employee last name in genitive case';
+--
 comment on column cdn_employee.lastNameDat is 'Employee last name in dative case';
+--
+comment on column cdn_employee.lastNameDat_ru is 'Employee last name in dative case';
+--
+comment on column cdn_employee.lastNameDat_uk is 'Employee last name in dative case';
 --
 comment on column cdn_employee.firstNameGen is 'Employee first name in genitive case';
 --
+comment on column cdn_employee.firstNameGen_ru is 'Employee first name in genitive case';
+--
+comment on column cdn_employee.firstNameGen_uk is 'Employee first name in genitive case';
+--
 comment on column cdn_employee.firstNameDat is 'Employee first name in dative case';
+--
+comment on column cdn_employee.firstNameDat_ru is 'Employee first name in dative case';
+--
+comment on column cdn_employee.firstNameDat_uk is 'Employee first name in dative case';
 --
 comment on column cdn_employee.middleNameGen is 'Employee middle name in genitive case';
 --
+comment on column cdn_employee.middleNameGen_ru is 'Employee middle name in genitive case';
+--
+comment on column cdn_employee.middleNameGen_uk is 'Employee middle name in genitive case';
+--
 comment on column cdn_employee.middleNameDat is 'Employee middle name in dative case';
+--
+comment on column cdn_employee.middleNameDat_ru is 'Employee middle name in dative case';
+--
+comment on column cdn_employee.middleNameDat_uk is 'Employee middle name in dative case';
 --
 comment on column cdn_employee.shortFIOGen is 'Employee short name in genitive case';
 --
+comment on column cdn_employee.shortFIOGen_ru is 'Employee short name in genitive case';
+--
+comment on column cdn_employee.shortFIOGen_uk is 'Employee short name in genitive case';
+--
 comment on column cdn_employee.shortFIODat is 'Employee short name in dative case';
+--
+comment on column cdn_employee.shortFIODat_ru is 'Employee short name in dative case';
+--
+comment on column cdn_employee.shortFIODat_uk is 'Employee short name in dative case';
 --
 comment on column cdn_employee.fullFIOGen is 'Employee full name in genitive case';
 --
+comment on column cdn_employee.fullFIOGen_ru is 'Employee full name in genitive case';
+--
+comment on column cdn_employee.fullFIOGen_uk is 'Employee full name in genitive case';
+--
 comment on column cdn_employee.fullFIODat is 'Employee full name in dative case';
+--
+comment on column cdn_employee.fullFIODat_ru is 'Employee full name in dative case';
+--
+comment on column cdn_employee.fullFIODat_uk is 'Employee full name in dative case';
 --
 comment on column cdn_employee.applyGen is 'Describes how to treat to this person in genitive case';
 --
+comment on column cdn_employee.applyGen_ru is 'Describes how to treat to this person in genitive case';
+--
+comment on column cdn_employee.applyGen_uk is 'Describes how to treat to this person in genitive case';
+--
 comment on column cdn_employee.applyDat is 'Describes how to treat to this person in dative case';
+--
+comment on column cdn_employee.applyDat_ru is 'Describes how to treat to this person in dative case';
+--
+comment on column cdn_employee.applyDat_uk is 'Describes how to treat to this person in dative case';
 --
 comment on column cdn_employee.departmentID is 'Department of external organization, which employee belongs';
 --
 comment on column cdn_employee.organizationID is 'External organization, which employee belongs';
 --
 comment on column cdn_employee.addrText is 'Formulation of the recipient, that will appear in the formation of outgoing document';
+--
+comment on column cdn_employee.addrText_ru is 'Formulation of the recipient, that will appear in the formation of outgoing document';
+--
+comment on column cdn_employee.addrText_uk is 'Formulation of the recipient, that will appear in the formation of outgoing document';
 --
 comment on column cdn_employee.mi_owner is 'Row owner';
 --
@@ -3646,6 +4258,10 @@ comment on table cdn_language is 'Languages directory according to ISO-639-1';
 comment on column cdn_language.code is 'ISO 639-1 code';
 --
 comment on column cdn_language.languageName is 'Language name';
+--
+comment on column cdn_language.languageName_ru is 'Language name';
+--
+comment on column cdn_language.languageName_uk is 'Language name';
 --
 comment on column cdn_language.nativeName is 'Native name (Endonym)';
 --
@@ -3671,9 +4287,21 @@ comment on column cdn_nationality.code is 'Nationality code';
 --
 comment on column cdn_nationality.name is 'Name of nationality';
 --
+comment on column cdn_nationality.name_ru is 'Name of nationality';
+--
+comment on column cdn_nationality.name_uk is 'Name of nationality';
+--
 comment on column cdn_nationality.nameM is 'Nationality name for male';
 --
+comment on column cdn_nationality.nameM_ru is 'Nationality name for male';
+--
+comment on column cdn_nationality.nameM_uk is 'Nationality name for male';
+--
 comment on column cdn_nationality.nameF is 'Nationality name for male';
+--
+comment on column cdn_nationality.nameF_ru is 'Nationality name for male';
+--
+comment on column cdn_nationality.nameF_uk is 'Nationality name for male';
 --
 comment on column cdn_nationality.mi_owner is 'Row owner';
 --
@@ -3729,17 +4357,45 @@ comment on column cdn_organization.vatCode is 'VAT (value-added tax) registratio
 --
 comment on column cdn_organization.name is 'Name of organization without the quotes and abbreviations';
 --
+comment on column cdn_organization.name_ru is 'Name of organization without the quotes and abbreviations';
+--
+comment on column cdn_organization.name_uk is 'Name of organization without the quotes and abbreviations';
+--
 comment on column cdn_organization.fullName is 'Full name of organization, as it''s specified in the certificate of registration';
+--
+comment on column cdn_organization.fullName_ru is 'Full name of organization, as it''s specified in the certificate of registration';
+--
+comment on column cdn_organization.fullName_uk is 'Full name of organization, as it''s specified in the certificate of registration';
 --
 comment on column cdn_organization.nameGen is 'Organization name in genitive case';
 --
+comment on column cdn_organization.nameGen_ru is 'Organization name in genitive case';
+--
+comment on column cdn_organization.nameGen_uk is 'Organization name in genitive case';
+--
 comment on column cdn_organization.nameDat is 'Organization name in dative case';
+--
+comment on column cdn_organization.nameDat_ru is 'Organization name in dative case';
+--
+comment on column cdn_organization.nameDat_uk is 'Organization name in dative case';
 --
 comment on column cdn_organization.fullNameGen is 'Full name of organization, as it''s specified in the certificate of registration, in genitive case';
 --
+comment on column cdn_organization.fullNameGen_ru is 'Full name of organization, as it''s specified in the certificate of registration, in genitive case';
+--
+comment on column cdn_organization.fullNameGen_uk is 'Full name of organization, as it''s specified in the certificate of registration, in genitive case';
+--
 comment on column cdn_organization.fullNameDat is 'Full name of organization, as it''s specified in the certificate of registration, in dative case';
 --
+comment on column cdn_organization.fullNameDat_ru is 'Full name of organization, as it''s specified in the certificate of registration, in dative case';
+--
+comment on column cdn_organization.fullNameDat_uk is 'Full name of organization, as it''s specified in the certificate of registration, in dative case';
+--
 comment on column cdn_organization.description is 'Organization description';
+--
+comment on column cdn_organization.description_ru is 'Organization description';
+--
+comment on column cdn_organization.description_uk is 'Organization description';
 --
 comment on column cdn_organization.orgBusinessTypeID is 'Organization type';
 --
@@ -3749,7 +4405,15 @@ comment on column cdn_organization.corrIndexID is 'Index of correspondent';
 --
 comment on column cdn_organization.addrText is 'Formulation of the recipient, that will appear in the formation of PDF outgoing document';
 --
+comment on column cdn_organization.addrText_ru is 'Formulation of the recipient, that will appear in the formation of PDF outgoing document';
+--
+comment on column cdn_organization.addrText_uk is 'Formulation of the recipient, that will appear in the formation of PDF outgoing document';
+--
 comment on column cdn_organization.caption is 'Caption';
+--
+comment on column cdn_organization.caption_ru is 'Caption';
+--
+comment on column cdn_organization.caption_uk is 'Caption';
 --
 comment on column cdn_organization.mi_owner is 'Row owner';
 --
@@ -3771,9 +4435,21 @@ comment on column cdn_orgbusinesstype.code is 'Code of the organization type';
 --
 comment on column cdn_orgbusinesstype.shortName is 'Acronim of the organization type';
 --
+comment on column cdn_orgbusinesstype.shortName_ru is 'Acronim of the organization type';
+--
+comment on column cdn_orgbusinesstype.shortName_uk is 'Acronim of the organization type';
+--
 comment on column cdn_orgbusinesstype.name is 'Name of the organization type';
 --
+comment on column cdn_orgbusinesstype.name_ru is 'Name of the organization type';
+--
+comment on column cdn_orgbusinesstype.name_uk is 'Name of the organization type';
+--
 comment on column cdn_orgbusinesstype.fullName is 'Description of the organization type';
+--
+comment on column cdn_orgbusinesstype.fullName_ru is 'Description of the organization type';
+--
+comment on column cdn_orgbusinesstype.fullName_uk is 'Description of the organization type';
 --
 comment on column cdn_orgbusinesstype.isGovAuthority is 'Sign, that the organization of this type is a government authority';
 --
@@ -3797,9 +4473,21 @@ comment on column cdn_orgownershiptype.code is 'Code of the ownership type';
 --
 comment on column cdn_orgownershiptype.shortName is 'Acronim of the ownership type';
 --
+comment on column cdn_orgownershiptype.shortName_ru is 'Acronim of the ownership type';
+--
+comment on column cdn_orgownershiptype.shortName_uk is 'Acronim of the ownership type';
+--
 comment on column cdn_orgownershiptype.name is 'Name of the ownership type';
 --
+comment on column cdn_orgownershiptype.name_ru is 'Name of the ownership type';
+--
+comment on column cdn_orgownershiptype.name_uk is 'Name of the ownership type';
+--
 comment on column cdn_orgownershiptype.fullName is 'Full name of the ownership type';
+--
+comment on column cdn_orgownershiptype.fullName_ru is 'Full name of the ownership type';
+--
+comment on column cdn_orgownershiptype.fullName_uk is 'Full name of the ownership type';
 --
 comment on column cdn_orgownershiptype.mi_owner is 'Row owner';
 --
@@ -3819,53 +4507,141 @@ comment on table cdn_person is 'Physical persons dictionary';
 --
 comment on column cdn_person.lastName is 'Last name of the person';
 --
+comment on column cdn_person.lastName_ru is 'Last name of the person';
+--
+comment on column cdn_person.lastName_uk is 'Last name of the person';
+--
 comment on column cdn_person.firstName is 'First name of the person';
+--
+comment on column cdn_person.firstName_ru is 'First name of the person';
+--
+comment on column cdn_person.firstName_uk is 'First name of the person';
 --
 comment on column cdn_person.middleName is 'Middle name of the person';
 --
+comment on column cdn_person.middleName_ru is 'Middle name of the person';
+--
+comment on column cdn_person.middleName_uk is 'Middle name of the person';
+--
 comment on column cdn_person.identCard is 'Person''s identity card';
 --
+comment on column cdn_person.identCard_ru is 'Person''s identity card';
+--
+comment on column cdn_person.identCard_uk is 'Person''s identity card';
+--
 comment on column cdn_person.workPlacePos is 'Place of work, position';
+--
+comment on column cdn_person.workPlacePos_ru is 'Place of work, position';
+--
+comment on column cdn_person.workPlacePos_uk is 'Place of work, position';
 --
 comment on column cdn_person.birthDate is 'Birthday of the person';
 --
 comment on column cdn_person.description is 'Description of the person';
 --
+comment on column cdn_person.description_ru is 'Description of the person';
+--
+comment on column cdn_person.description_uk is 'Description of the person';
+--
 comment on column cdn_person.sexType is 'Person''s gender';
 --
 comment on column cdn_person.suffix is 'Suffix of the person';
 --
+comment on column cdn_person.suffix_ru is 'Suffix of the person';
+--
+comment on column cdn_person.suffix_uk is 'Suffix of the person';
+--
 comment on column cdn_person.shortFIO is 'Example: Antonov I.P.';
+--
+comment on column cdn_person.shortFIO_ru is 'Example: Antonov I.P.';
+--
+comment on column cdn_person.shortFIO_uk is 'Example: Antonov I.P.';
 --
 comment on column cdn_person.fullFIO is 'Example: Antonov Ivan Petrovich';
 --
+comment on column cdn_person.fullFIO_ru is 'Example: Antonov Ivan Petrovich';
+--
+comment on column cdn_person.fullFIO_uk is 'Example: Antonov Ivan Petrovich';
+--
 comment on column cdn_person.apply is 'Apply to the person';
+--
+comment on column cdn_person.apply_ru is 'Apply to the person';
+--
+comment on column cdn_person.apply_uk is 'Apply to the person';
 --
 comment on column cdn_person.photo is 'Person''s photo';
 --
 comment on column cdn_person.lastNameGen is 'Person''s last name in genitive case';
 --
+comment on column cdn_person.lastNameGen_ru is 'Person''s last name in genitive case';
+--
+comment on column cdn_person.lastNameGen_uk is 'Person''s last name in genitive case';
+--
 comment on column cdn_person.lastNameDat is 'Person''s last name in dative case';
+--
+comment on column cdn_person.lastNameDat_ru is 'Person''s last name in dative case';
+--
+comment on column cdn_person.lastNameDat_uk is 'Person''s last name in dative case';
 --
 comment on column cdn_person.firstNameGen is 'Person''s first name in genitive case';
 --
+comment on column cdn_person.firstNameGen_ru is 'Person''s first name in genitive case';
+--
+comment on column cdn_person.firstNameGen_uk is 'Person''s first name in genitive case';
+--
 comment on column cdn_person.firstNameDat is 'Person''s first name in dative case';
+--
+comment on column cdn_person.firstNameDat_ru is 'Person''s first name in dative case';
+--
+comment on column cdn_person.firstNameDat_uk is 'Person''s first name in dative case';
 --
 comment on column cdn_person.middleNameGen is 'Person''s middle name in genitive case';
 --
+comment on column cdn_person.middleNameGen_ru is 'Person''s middle name in genitive case';
+--
+comment on column cdn_person.middleNameGen_uk is 'Person''s middle name in genitive case';
+--
 comment on column cdn_person.middleNameDat is 'Person''s middle name in dative case';
+--
+comment on column cdn_person.middleNameDat_ru is 'Person''s middle name in dative case';
+--
+comment on column cdn_person.middleNameDat_uk is 'Person''s middle name in dative case';
 --
 comment on column cdn_person.shortFIOGen is 'Person''s short name in genitive case';
 --
+comment on column cdn_person.shortFIOGen_ru is 'Person''s short name in genitive case';
+--
+comment on column cdn_person.shortFIOGen_uk is 'Person''s short name in genitive case';
+--
 comment on column cdn_person.shortFIODat is 'Person''s short name in dative case';
+--
+comment on column cdn_person.shortFIODat_ru is 'Person''s short name in dative case';
+--
+comment on column cdn_person.shortFIODat_uk is 'Person''s short name in dative case';
 --
 comment on column cdn_person.fullFIOGen is 'Person''s full name in genitive case';
 --
+comment on column cdn_person.fullFIOGen_ru is 'Person''s full name in genitive case';
+--
+comment on column cdn_person.fullFIOGen_uk is 'Person''s full name in genitive case';
+--
 comment on column cdn_person.fullFIODat is 'Person''s full name in dative case';
+--
+comment on column cdn_person.fullFIODat_ru is 'Person''s full name in dative case';
+--
+comment on column cdn_person.fullFIODat_uk is 'Person''s full name in dative case';
 --
 comment on column cdn_person.applyGen is 'Apply to the person in genitive case';
 --
+comment on column cdn_person.applyGen_ru is 'Apply to the person in genitive case';
+--
+comment on column cdn_person.applyGen_uk is 'Apply to the person in genitive case';
+--
 comment on column cdn_person.applyDat is 'Apply to the person in dative case';
+--
+comment on column cdn_person.applyDat_ru is 'Apply to the person in dative case';
+--
+comment on column cdn_person.applyDat_uk is 'Apply to the person in dative case';
 --
 comment on column cdn_person.regionID is 'Person''s region';
 --
@@ -3899,6 +4675,10 @@ comment on column cdn_personcategory.code is 'Code';
 --
 comment on column cdn_personcategory.name is 'Name of category';
 --
+comment on column cdn_personcategory.name_ru is 'Name of category';
+--
+comment on column cdn_personcategory.name_uk is 'Name of category';
+--
 comment on column cdn_personcategory.mi_owner is 'Row owner';
 --
 comment on column cdn_personcategory.mi_createDate is 'Creation date';
@@ -3919,6 +4699,10 @@ comment on column cdn_personclass.code is 'Code';
 --
 comment on column cdn_personclass.name is 'Name of category';
 --
+comment on column cdn_personclass.name_ru is 'Name of category';
+--
+comment on column cdn_personclass.name_uk is 'Name of category';
+--
 comment on column cdn_personclass.mi_owner is 'Row owner';
 --
 comment on column cdn_personclass.mi_createDate is 'Creation date';
@@ -3938,6 +4722,10 @@ comment on table cdn_personsocialstatus is 'Dictionary of social status';
 comment on column cdn_personsocialstatus.code is 'Code';
 --
 comment on column cdn_personsocialstatus.name is 'Name of social status';
+--
+comment on column cdn_personsocialstatus.name_ru is 'Name of social status';
+--
+comment on column cdn_personsocialstatus.name_uk is 'Name of social status';
 --
 comment on column cdn_personsocialstatus.mi_owner is 'Row owner';
 --
@@ -3961,6 +4749,10 @@ comment on column cdn_postindex.streetID is 'Street';
 --
 comment on column cdn_postindex.description is 'Description';
 --
+comment on column cdn_postindex.description_ru is 'Description';
+--
+comment on column cdn_postindex.description_uk is 'Description';
+--
 comment on column cdn_postindex.mi_owner is 'Row owner';
 --
 comment on column cdn_postindex.mi_createDate is 'Creation date';
@@ -3980,6 +4772,10 @@ comment on table cdn_profession is 'Dictionary of standard professions';
 comment on column cdn_profession.code is 'Code';
 --
 comment on column cdn_profession.name is 'Name of profession';
+--
+comment on column cdn_profession.name_ru is 'Name of profession';
+--
+comment on column cdn_profession.name_uk is 'Name of profession';
 --
 comment on column cdn_profession.mi_owner is 'Row owner';
 --
@@ -4005,11 +4801,27 @@ comment on column cdn_region.regionTypeID is 'Type of region';
 --
 comment on column cdn_region.name is 'Name of region';
 --
+comment on column cdn_region.name_ru is 'Name of region';
+--
+comment on column cdn_region.name_uk is 'Name of region';
+--
 comment on column cdn_region.caption is 'Caption';
+--
+comment on column cdn_region.caption_ru is 'Caption';
+--
+comment on column cdn_region.caption_uk is 'Caption';
 --
 comment on column cdn_region.fullName is 'Full name of region';
 --
+comment on column cdn_region.fullName_ru is 'Full name of region';
+--
+comment on column cdn_region.fullName_uk is 'Full name of region';
+--
 comment on column cdn_region.description is 'Description of region';
+--
+comment on column cdn_region.description_ru is 'Description of region';
+--
+comment on column cdn_region.description_uk is 'Description of region';
 --
 comment on column cdn_region.phoneCode is 'Phone code of region';
 --
@@ -4035,6 +4847,10 @@ comment on column cdn_regiontype.code is 'Code';
 --
 comment on column cdn_regiontype.name is 'Name of region type';
 --
+comment on column cdn_regiontype.name_ru is 'Name of region type';
+--
+comment on column cdn_regiontype.name_uk is 'Name of region type';
+--
 comment on column cdn_regiontype.mi_owner is 'Row owner';
 --
 comment on column cdn_regiontype.mi_createDate is 'Creation date';
@@ -4055,6 +4871,10 @@ comment on column cdn_staffunittype.code is 'Code of the staffunit type';
 --
 comment on column cdn_staffunittype.name is 'Name of the staffunit type';
 --
+comment on column cdn_staffunittype.name_ru is 'Name of the staffunit type';
+--
+comment on column cdn_staffunittype.name_uk is 'Name of the staffunit type';
+--
 comment on column cdn_staffunittype.mi_owner is 'Row owner';
 --
 comment on column cdn_staffunittype.mi_createDate is 'Creation date';
@@ -4073,7 +4893,15 @@ comment on table cdn_street is 'List of streets';
 --
 comment on column cdn_street.name is 'Street name';
 --
+comment on column cdn_street.name_ru is 'Street name';
+--
+comment on column cdn_street.name_uk is 'Street name';
+--
 comment on column cdn_street.fullName is 'Street full name';
+--
+comment on column cdn_street.fullName_ru is 'Street full name';
+--
+comment on column cdn_street.fullName_uk is 'Street full name';
 --
 comment on column cdn_street.code is 'Code';
 --
@@ -4147,23 +4975,55 @@ comment on column org_department.code is 'Internal code';
 --
 comment on column org_department.name is 'Name of department without the quotes and abbreviations';
 --
+comment on column org_department.name_ru is 'Name of department without the quotes and abbreviations';
+--
+comment on column org_department.name_uk is 'Name of department without the quotes and abbreviations';
+--
 comment on column org_department.fullName is 'Department full name';
+--
+comment on column org_department.fullName_ru is 'Department full name';
+--
+comment on column org_department.fullName_uk is 'Department full name';
 --
 comment on column org_department.description is 'Department description';
 --
+comment on column org_department.description_ru is 'Department description';
+--
+comment on column org_department.description_uk is 'Department description';
+--
 comment on column org_department.nameGen is 'Department name without the quotes and abbreviations in genitive case';
+--
+comment on column org_department.nameGen_ru is 'Department name without the quotes and abbreviations in genitive case';
+--
+comment on column org_department.nameGen_uk is 'Department name without the quotes and abbreviations in genitive case';
 --
 comment on column org_department.nameDat is 'Department name without the quotes and abbreviations in dative case';
 --
+comment on column org_department.nameDat_ru is 'Department name without the quotes and abbreviations in dative case';
+--
+comment on column org_department.nameDat_uk is 'Department name without the quotes and abbreviations in dative case';
+--
 comment on column org_department.fullNameGen is 'Department full name in genitive case';
 --
+comment on column org_department.fullNameGen_ru is 'Department full name in genitive case';
+--
+comment on column org_department.fullNameGen_uk is 'Department full name in genitive case';
+--
 comment on column org_department.fullNameDat is 'Department full name in dative case';
+--
+comment on column org_department.fullNameDat_ru is 'Department full name in dative case';
+--
+comment on column org_department.fullNameDat_uk is 'Department full name in dative case';
 --
 comment on column org_department.depTypeID is 'Department type';
 --
 comment on column org_department.isClerical is 'Clerical unit mark';
 --
 comment on column org_department.caption is 'Caption';
+--
+comment on column org_department.caption_ru is 'Caption';
+--
+comment on column org_department.caption_uk is 'Caption';
 --
 comment on column org_department.mi_owner is 'Row owner';
 --
@@ -4211,59 +5071,163 @@ comment on column org_employee.userID is 'User login';
 --
 comment on column org_employee.lastName is 'Employee last name';
 --
+comment on column org_employee.lastName_ru is 'Employee last name';
+--
+comment on column org_employee.lastName_uk is 'Employee last name';
+--
 comment on column org_employee.firstName is 'Employee first name';
 --
+comment on column org_employee.firstName_ru is 'Employee first name';
+--
+comment on column org_employee.firstName_uk is 'Employee first name';
+--
 comment on column org_employee.middleName is 'Employee middle name';
+--
+comment on column org_employee.middleName_ru is 'Employee middle name';
+--
+comment on column org_employee.middleName_uk is 'Employee middle name';
 --
 comment on column org_employee.birthDate is 'Date of birth';
 --
 comment on column org_employee.description is 'Comment on employee';
 --
+comment on column org_employee.description_ru is 'Comment on employee';
+--
+comment on column org_employee.description_uk is 'Comment on employee';
+--
 comment on column org_employee.sexType is 'Employee''s gender';
 --
 comment on column org_employee.suffix is 'Suffix';
 --
+comment on column org_employee.suffix_ru is 'Suffix';
+--
+comment on column org_employee.suffix_uk is 'Suffix';
+--
 comment on column org_employee.shortFIO is 'Example: Smith J.K.';
+--
+comment on column org_employee.shortFIO_ru is 'Example: Smith J.K.';
+--
+comment on column org_employee.shortFIO_uk is 'Example: Smith J.K.';
 --
 comment on column org_employee.fullFIO is 'Example: Smith Jay Key';
 --
+comment on column org_employee.fullFIO_ru is 'Example: Smith Jay Key';
+--
+comment on column org_employee.fullFIO_uk is 'Example: Smith Jay Key';
+--
 comment on column org_employee.apply is 'Describes how to treat to this person';
+--
+comment on column org_employee.apply_ru is 'Describes how to treat to this person';
+--
+comment on column org_employee.apply_uk is 'Describes how to treat to this person';
 --
 comment on column org_employee.lastNameGen is 'Employee last name in genitive case';
 --
+comment on column org_employee.lastNameGen_ru is 'Employee last name in genitive case';
+--
+comment on column org_employee.lastNameGen_uk is 'Employee last name in genitive case';
+--
 comment on column org_employee.lastNameDat is 'Employee last name in dative case';
+--
+comment on column org_employee.lastNameDat_ru is 'Employee last name in dative case';
+--
+comment on column org_employee.lastNameDat_uk is 'Employee last name in dative case';
 --
 comment on column org_employee.lastNameObj is 'Employee last name in objective case';
 --
+comment on column org_employee.lastNameObj_ru is 'Employee last name in objective case';
+--
+comment on column org_employee.lastNameObj_uk is 'Employee last name in objective case';
+--
 comment on column org_employee.firstNameGen is 'Employee first name in genitive case';
+--
+comment on column org_employee.firstNameGen_ru is 'Employee first name in genitive case';
+--
+comment on column org_employee.firstNameGen_uk is 'Employee first name in genitive case';
 --
 comment on column org_employee.firstNameDat is 'Employee first name in dative case';
 --
+comment on column org_employee.firstNameDat_ru is 'Employee first name in dative case';
+--
+comment on column org_employee.firstNameDat_uk is 'Employee first name in dative case';
+--
 comment on column org_employee.firstNameObj is 'Employee first name in objective case';
+--
+comment on column org_employee.firstNameObj_ru is 'Employee first name in objective case';
+--
+comment on column org_employee.firstNameObj_uk is 'Employee first name in objective case';
 --
 comment on column org_employee.middleNameGen is 'Employee middle name in genitive case';
 --
+comment on column org_employee.middleNameGen_ru is 'Employee middle name in genitive case';
+--
+comment on column org_employee.middleNameGen_uk is 'Employee middle name in genitive case';
+--
 comment on column org_employee.middleNameDat is 'Employee middle name in dative case';
+--
+comment on column org_employee.middleNameDat_ru is 'Employee middle name in dative case';
+--
+comment on column org_employee.middleNameDat_uk is 'Employee middle name in dative case';
 --
 comment on column org_employee.middleNameObj is 'Employee middle name in objective case';
 --
+comment on column org_employee.middleNameObj_ru is 'Employee middle name in objective case';
+--
+comment on column org_employee.middleNameObj_uk is 'Employee middle name in objective case';
+--
 comment on column org_employee.shortFIOGen is 'Employee short name in genitive case';
+--
+comment on column org_employee.shortFIOGen_ru is 'Employee short name in genitive case';
+--
+comment on column org_employee.shortFIOGen_uk is 'Employee short name in genitive case';
 --
 comment on column org_employee.shortFIODat is 'Employee short name in dative case';
 --
+comment on column org_employee.shortFIODat_ru is 'Employee short name in dative case';
+--
+comment on column org_employee.shortFIODat_uk is 'Employee short name in dative case';
+--
 comment on column org_employee.shortFIOObj is 'Employee short name in objective case';
+--
+comment on column org_employee.shortFIOObj_ru is 'Employee short name in objective case';
+--
+comment on column org_employee.shortFIOObj_uk is 'Employee short name in objective case';
 --
 comment on column org_employee.fullFIOGen is 'Employee full name in genitive case';
 --
+comment on column org_employee.fullFIOGen_ru is 'Employee full name in genitive case';
+--
+comment on column org_employee.fullFIOGen_uk is 'Employee full name in genitive case';
+--
 comment on column org_employee.fullFIODat is 'Employee full name in dative case';
+--
+comment on column org_employee.fullFIODat_ru is 'Employee full name in dative case';
+--
+comment on column org_employee.fullFIODat_uk is 'Employee full name in dative case';
 --
 comment on column org_employee.fullFIOObj is 'Employee full name in objective case';
 --
+comment on column org_employee.fullFIOObj_ru is 'Employee full name in objective case';
+--
+comment on column org_employee.fullFIOObj_uk is 'Employee full name in objective case';
+--
 comment on column org_employee.applyGen is 'Describes how to treat to this person in genitive case';
+--
+comment on column org_employee.applyGen_ru is 'Describes how to treat to this person in genitive case';
+--
+comment on column org_employee.applyGen_uk is 'Describes how to treat to this person in genitive case';
 --
 comment on column org_employee.applyDat is 'Describes how to treat to this person in dative case';
 --
+comment on column org_employee.applyDat_ru is 'Describes how to treat to this person in dative case';
+--
+comment on column org_employee.applyDat_uk is 'Describes how to treat to this person in dative case';
+--
 comment on column org_employee.applyObj is 'Describes how to treat to this person in objective case';
+--
+comment on column org_employee.applyObj_ru is 'Describes how to treat to this person in objective case';
+--
+comment on column org_employee.applyObj_uk is 'Describes how to treat to this person in objective case';
 --
 comment on column org_employee.facsimile is 'Employee signature image';
 --
@@ -4293,7 +5257,15 @@ comment on column org_employeeonstaff.employeeOnStaffType is 'Assignment type';
 --
 comment on column org_employeeonstaff.description is 'Assignment description';
 --
+comment on column org_employeeonstaff.description_ru is 'Assignment description';
+--
+comment on column org_employeeonstaff.description_uk is 'Assignment description';
+--
 comment on column org_employeeonstaff.caption is 'Caption';
+--
+comment on column org_employeeonstaff.caption_ru is 'Caption';
+--
+comment on column org_employeeonstaff.caption_uk is 'Caption';
 --
 comment on column org_employeeonstaff.mi_owner is 'Row owner';
 --
@@ -4335,9 +5307,21 @@ comment on column org_execgroup.code is 'Code of the group';
 --
 comment on column org_execgroup.name is 'Name of the group';
 --
+comment on column org_execgroup.name_ru is 'Name of the group';
+--
+comment on column org_execgroup.name_uk is 'Name of the group';
+--
 comment on column org_execgroup.nameGen is 'Department name in genitive case';
 --
+comment on column org_execgroup.nameGen_ru is 'Department name in genitive case';
+--
+comment on column org_execgroup.nameGen_uk is 'Department name in genitive case';
+--
 comment on column org_execgroup.nameDat is 'Department name in dative case';
+--
+comment on column org_execgroup.nameDat_ru is 'Department name in dative case';
+--
+comment on column org_execgroup.nameDat_uk is 'Department name in dative case';
 --
 comment on column org_execgroup.mi_owner is 'Row owner';
 --
@@ -4411,17 +5395,45 @@ comment on column org_organization.vatCode is 'VAT (value-added tax) registratio
 --
 comment on column org_organization.name is 'Name of organization without the quotes and abbreviations';
 --
+comment on column org_organization.name_ru is 'Name of organization without the quotes and abbreviations';
+--
+comment on column org_organization.name_uk is 'Name of organization without the quotes and abbreviations';
+--
 comment on column org_organization.fullName is 'Full name of organization, as it''s specified in the certificate of registration';
+--
+comment on column org_organization.fullName_ru is 'Full name of organization, as it''s specified in the certificate of registration';
+--
+comment on column org_organization.fullName_uk is 'Full name of organization, as it''s specified in the certificate of registration';
 --
 comment on column org_organization.nameGen is 'Organization name in genitive case';
 --
+comment on column org_organization.nameGen_ru is 'Organization name in genitive case';
+--
+comment on column org_organization.nameGen_uk is 'Organization name in genitive case';
+--
 comment on column org_organization.nameDat is 'Organization name in dative case';
+--
+comment on column org_organization.nameDat_ru is 'Organization name in dative case';
+--
+comment on column org_organization.nameDat_uk is 'Organization name in dative case';
 --
 comment on column org_organization.fullNameGen is 'Full name of organization, as it''s specified in the certificate of registration, in genitive case';
 --
+comment on column org_organization.fullNameGen_ru is 'Full name of organization, as it''s specified in the certificate of registration, in genitive case';
+--
+comment on column org_organization.fullNameGen_uk is 'Full name of organization, as it''s specified in the certificate of registration, in genitive case';
+--
 comment on column org_organization.fullNameDat is 'Full name of organization, as it''s specified in the certificate of registration, in dative case';
 --
+comment on column org_organization.fullNameDat_ru is 'Full name of organization, as it''s specified in the certificate of registration, in dative case';
+--
+comment on column org_organization.fullNameDat_uk is 'Full name of organization, as it''s specified in the certificate of registration, in dative case';
+--
 comment on column org_organization.description is 'Organization description';
+--
+comment on column org_organization.description_ru is 'Organization description';
+--
+comment on column org_organization.description_uk is 'Organization description';
 --
 comment on column org_organization.orgBusinessTypeID is 'Organization type';
 --
@@ -4447,15 +5459,39 @@ comment on column org_profession.code is 'Code of position';
 --
 comment on column org_profession.name is 'Position name';
 --
+comment on column org_profession.name_ru is 'Position name';
+--
+comment on column org_profession.name_uk is 'Position name';
+--
 comment on column org_profession.fullName is 'Position full name';
+--
+comment on column org_profession.fullName_ru is 'Position full name';
+--
+comment on column org_profession.fullName_uk is 'Position full name';
 --
 comment on column org_profession.nameGen is 'Position name in genitive case';
 --
+comment on column org_profession.nameGen_ru is 'Position name in genitive case';
+--
+comment on column org_profession.nameGen_uk is 'Position name in genitive case';
+--
 comment on column org_profession.nameDat is 'Position name in dative case';
+--
+comment on column org_profession.nameDat_ru is 'Position name in dative case';
+--
+comment on column org_profession.nameDat_uk is 'Position name in dative case';
 --
 comment on column org_profession.fullNameGen is 'Position full name in genitive case';
 --
+comment on column org_profession.fullNameGen_ru is 'Position full name in genitive case';
+--
+comment on column org_profession.fullNameGen_uk is 'Position full name in genitive case';
+--
 comment on column org_profession.fullNameDat is 'Position full name in dative case';
+--
+comment on column org_profession.fullNameDat_ru is 'Position full name in dative case';
+--
+comment on column org_profession.fullNameDat_uk is 'Position full name in dative case';
 --
 comment on column org_profession.mi_owner is 'Row owner';
 --
@@ -4479,19 +5515,51 @@ comment on column org_staffunit.code is 'Staff unit internal code';
 --
 comment on column org_staffunit.name is 'Name of staff unit without the quotes and abbreviations';
 --
+comment on column org_staffunit.name_ru is 'Name of staff unit without the quotes and abbreviations';
+--
+comment on column org_staffunit.name_uk is 'Name of staff unit without the quotes and abbreviations';
+--
 comment on column org_staffunit.fullName is 'Staff unit full name';
+--
+comment on column org_staffunit.fullName_ru is 'Staff unit full name';
+--
+comment on column org_staffunit.fullName_uk is 'Staff unit full name';
 --
 comment on column org_staffunit.description is 'Staff unit description';
 --
+comment on column org_staffunit.description_ru is 'Staff unit description';
+--
+comment on column org_staffunit.description_uk is 'Staff unit description';
+--
 comment on column org_staffunit.nameGen is 'Name of staff unit without the quotes and abbreviations in genitive case';
+--
+comment on column org_staffunit.nameGen_ru is 'Name of staff unit without the quotes and abbreviations in genitive case';
+--
+comment on column org_staffunit.nameGen_uk is 'Name of staff unit without the quotes and abbreviations in genitive case';
 --
 comment on column org_staffunit.nameDat is 'Name of staff unit without the quotes and abbreviations in dative case';
 --
+comment on column org_staffunit.nameDat_ru is 'Name of staff unit without the quotes and abbreviations in dative case';
+--
+comment on column org_staffunit.nameDat_uk is 'Name of staff unit without the quotes and abbreviations in dative case';
+--
 comment on column org_staffunit.fullNameGen is 'Staff unit full name in genitive case';
+--
+comment on column org_staffunit.fullNameGen_ru is 'Staff unit full name in genitive case';
+--
+comment on column org_staffunit.fullNameGen_uk is 'Staff unit full name in genitive case';
 --
 comment on column org_staffunit.fullNameDat is 'Full name in dative case';
 --
+comment on column org_staffunit.fullNameDat_ru is 'Full name in dative case';
+--
+comment on column org_staffunit.fullNameDat_uk is 'Full name in dative case';
+--
 comment on column org_staffunit.caption is 'Caption';
+--
+comment on column org_staffunit.caption_ru is 'Caption';
+--
+comment on column org_staffunit.caption_uk is 'Caption';
 --
 comment on column org_staffunit.professionExtID is 'Profession';
 --
@@ -4524,6 +5592,10 @@ comment on column org_unit.parentID is 'Parent';
 comment on column org_unit.code is 'Organization unit internal code';
 --
 comment on column org_unit.caption is 'Caption';
+--
+comment on column org_unit.caption_ru is 'Caption';
+--
+comment on column org_unit.caption_uk is 'Caption';
 --
 comment on column org_unit.unitType is 'Organization unit type';
 --
@@ -4681,6 +5753,10 @@ comment on column uba_group.code is 'Group code';
 --
 comment on column uba_group.name is 'Name';
 --
+comment on column uba_group.name_ru is 'Name';
+--
+comment on column uba_group.name_uk is 'Name';
+--
 comment on column uba_group.description is 'Description';
 --
 comment on column uba_group.mi_owner is 'Row owner';
@@ -4757,6 +5833,10 @@ comment on column uba_role.sessionTimeout is 'Time after which the session is de
 --
 comment on column uba_role.allowedAppMethods is 'Which application level methods are allowed';
 --
+comment on column uba_role.description_ru is 'Description';
+--
+comment on column uba_role.description_uk is 'Description';
+--
 comment on column uba_role.mi_owner is 'Row owner';
 --
 comment on column uba_role.mi_createDate is 'Creation date';
@@ -4774,6 +5854,10 @@ comment on column uba_subject.code is 'Code';
 comment on column uba_subject.name is 'Login';
 --
 comment on column uba_subject.sType is 'Subject type';
+--
+comment on column uba_subject.name_ru is 'Login';
+--
+comment on column uba_subject.name_uk is 'Login';
 --
 comment on table uba_user is 'Users';
 --
@@ -4883,9 +5967,17 @@ comment on table ubm_desktop is 'Application desktops';
 --
 comment on column ubm_desktop.caption is 'Desktop name';
 --
+comment on column ubm_desktop.caption_ru is 'Desktop name';
+--
+comment on column ubm_desktop.caption_uk is 'Desktop name';
+--
 comment on column ubm_desktop.code is 'Code';
 --
 comment on column ubm_desktop.description is 'Desktop description';
+--
+comment on column ubm_desktop.description_ru is 'Desktop description';
+--
+comment on column ubm_desktop.description_uk is 'Desktop description';
 --
 comment on column ubm_desktop.iconCls is 'Desktop icon';
 --
@@ -4923,7 +6015,15 @@ comment on column ubm_enum.code is 'Value code';
 --
 comment on column ubm_enum.shortName is 'Short name';
 --
+comment on column ubm_enum.shortName_ru is 'Short name';
+--
+comment on column ubm_enum.shortName_uk is 'Short name';
+--
 comment on column ubm_enum.name is 'Value name';
+--
+comment on column ubm_enum.name_ru is 'Value name';
+--
+comment on column ubm_enum.name_uk is 'Value name';
 --
 comment on column ubm_enum.sortOrder is 'Order #';
 --
@@ -4953,6 +6053,10 @@ comment on column ubm_navshortcut.isFolder is 'Is folder?';
 --
 comment on column ubm_navshortcut.caption is 'Shortcut caption';
 --
+comment on column ubm_navshortcut.caption_ru is 'Shortcut caption';
+--
+comment on column ubm_navshortcut.caption_uk is 'Shortcut caption';
+--
 comment on column ubm_navshortcut.cmdCode is 'Command code';
 --
 comment on column ubm_navshortcut.inWindow is 'Display in new window';
@@ -4965,7 +6069,15 @@ comment on column ubm_navshortcut.iconCls is 'Icon (CSS class)';
 --
 comment on column ubm_navshortcut.description is 'Shortcut description';
 --
+comment on column ubm_navshortcut.description_ru is 'Shortcut description';
+--
+comment on column ubm_navshortcut.description_uk is 'Shortcut description';
+--
 comment on column ubm_navshortcut.keywords is 'Search keywords';
+--
+comment on column ubm_navshortcut.keywords_ru is 'Search keywords';
+--
+comment on column ubm_navshortcut.keywords_uk is 'Search keywords';
 --
 comment on column ubm_navshortcut.mi_owner is 'Row owner';
 --
@@ -4992,6 +6104,10 @@ comment on table ubm_query is 'Data Queries';
 comment on column ubm_query.code is 'Code';
 --
 comment on column ubm_query.name is 'Name';
+--
+comment on column ubm_query.name_ru is 'Name';
+--
+comment on column ubm_query.name_uk is 'Name';
 --
 comment on column ubm_query.ubql is 'UBQL (JSON)';
 --
@@ -5096,6 +6212,22 @@ comment on column ubs_settings.type is 'Value type';
 comment on column ubs_settings.settingValue is 'Value';
 --
 comment on column ubs_settings.defaultValue is 'Default value';
+--
+comment on column ubs_settings.name_ru is 'Setting name';
+--
+comment on column ubs_settings.name_uk is 'Setting name';
+--
+comment on column ubs_settings.description_ru is 'Description';
+--
+comment on column ubs_settings.description_uk is 'Description';
+--
+comment on column ubs_settings.settingValue_ru is 'Value';
+--
+comment on column ubs_settings.settingValue_uk is 'Value';
+--
+comment on column ubs_settings.defaultValue_ru is 'Default value';
+--
+comment on column ubs_settings.defaultValue_uk is 'Default value';
 --
 comment on column ubs_settings.mi_owner is 'Row owner';
 --

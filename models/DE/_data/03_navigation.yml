@@ -1,0 +1,56 @@
+$context:
+  type: navigation
+
+de_desktop:
+  caption: {en: Data exchange, ru: Обмен данными, uk: Обмін даними}
+  description: {en: Data exchange, ru: Обмен данными, uk: Обмін даними}
+  iconCls: u-icon-desktop-swap
+  items:
+  - de_folder_metadata:
+      caption: {en: Metadata, ru: Метаданные, uk: Метадані}
+      iconCls: u-icon-attributes
+      items:
+      - de_model:
+          caption: {en: Models, ru: Модели, uk: Моделі}
+          showList:
+            fieldList:
+            - name
+      - de_entity:
+          caption: {en: Entities, ru: Сущности, uk: Сутності}
+          showList:
+            fieldList:
+            - name
+            - parentModel
+      - de_attribute:
+          caption: {en: Attributes, ru: Атрибуты, uk: Атрибути}
+          showList:
+            fieldList:
+            - name
+            - parentEntity
+  - de_folder_rules:
+      caption: {en: Rules, ru: Правила, uk: Правила}
+      iconCls: u-icon-hierarchy
+      items:
+      - de_ruleModel:
+          caption: {en: Rules for models, ru: Правила для моделей, uk: Правила для моделей}
+          showList:
+            fieldList:
+            - name
+            - modelSource
+            - modelDestination
+      - de_ruleEntity:
+          caption: {en: Rules for entities, ru: Правила для сущностей, uk: Правила для сутностей}
+          showList:
+            fieldList:
+            - name
+            - parentRuleModel
+            - entitySource
+            - entityDestination
+      - de_ruleAttribute:
+          caption: {en: Rules for attributes, ru: Правила для атрибутов, uk: Правила для атрибутів}
+          showList:
+            fieldList:
+            - name
+            - parentRuleEntity
+            - attributeSource
+            - attributeDestination

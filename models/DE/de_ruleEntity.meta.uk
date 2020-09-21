@@ -1,0 +1,23 @@
+{
+  "caption": "Правило для сутності",
+  "description": "Правило для сутності",
+  "attributes": [
+    {
+      "name": "name",
+      "caption": "Ім'я",
+      "description": "Ім'я"
+    },
+    {
+      "name": "parentRuleModel",
+      "caption": "Батьківське правило для моделі"
+    },
+    {
+      "name": "entitySource",
+      "caption": "Сутність джерела"
+    },
+    {
+      "name": "entityDestination",
+      "caption": "Сутність призначення"
+    }
+  ]
+}

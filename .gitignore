@@ -1,6 +1,7 @@
 node_modules
 logs
 .vscode
+avatars
 docs
 mainDB.db
 mainDB.db-wal
