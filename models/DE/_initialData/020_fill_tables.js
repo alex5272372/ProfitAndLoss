@@ -9,13 +9,13 @@ const fileData = [
     metaName: 'de_model',
     columns: 'name',
     mainField: 'name'
-  },
+  } /*,
   {
     csvName: 'de_entity.csv',
     metaName: 'de_entity',
     columns: 'name;parentModel',
     mainField: 'name'
-  }
+  } */
 ]
 
 const fillTables = (fileData, { connection: conn }) => {
