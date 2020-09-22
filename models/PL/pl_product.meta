@@ -1,14 +1,14 @@
 {
-  "caption": "Номенклатура",
-  "description": "Номенклатура",
+  "caption": "Product",
+  "description": "Product",
   "descriptionAttribute": "name",
   "attributes": [
     {
       "name": "name",
       "dataType": "String",
       "size": 100,
-      "caption": "Назва",
-      "description": "Назва",
+      "caption": "Name",
+      "description": "Name",
       "allowNull": false,
       "isMultiLang": false
     }

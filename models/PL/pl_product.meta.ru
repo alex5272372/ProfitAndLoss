@@ -1,6 +1,6 @@
 {
-  "caption": "Модель",
-  "description": "Модель",
+  "caption": "Номенклатура",
+  "description": "Номенклатура",
   "attributes": [
     {
       "name": "name",

@@ -4,8 +4,8 @@
   "attributes": [
     {
       "name": "name",
-      "caption": "Имя",
-      "description": "Имя"
+      "caption": "Название",
+      "description": "Название"
     },
     {
       "name": "parentRuleEntity",

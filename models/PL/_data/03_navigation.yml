@@ -1,0 +1,16 @@
+$context:
+  type: navigation
+
+pl_accounting:
+  caption: {en: Accounting, ru: Бухгалтерский учет, uk: Бухгалтерський облік}
+  description: {en: Accounting, ru: Бухгалтерский учет, uk: Бухгалтерський облік}
+  iconCls: u-icon-desktop
+  items:
+  - pl_folder_dict:
+      caption: {en: Dictionaries, ru: Справочники, uk: Довідники}
+      items:
+      - pl_product:
+          caption: {en: Products, ru: Номенклатура, uk: Номенклатура}
+          showList:
+            fieldList:
+            - name

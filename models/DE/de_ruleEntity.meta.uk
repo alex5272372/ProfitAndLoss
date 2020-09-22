@@ -4,8 +4,8 @@
   "attributes": [
     {
       "name": "name",
-      "caption": "Ім'я",
-      "description": "Ім'я"
+      "caption": "Назва",
+      "description": "Назва"
     },
     {
       "name": "parentRuleModel",
