@@ -9,17 +9,17 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@unitybase/adminui-pub": "^5.13.37",
-    "@unitybase/adminui-reg": "^5.4.37",
-    "@unitybase/adminui-vue": "^1.13.2",
-    "@unitybase/cdn": "^5.4.32",
-    "@unitybase/org": "^5.4.2",
-    "@unitybase/ubcli": "^5.7.2",
-    "@unitybase/ubq": "^5.4.2"
+    "@unitybase/adminui-pub": "^5.13.40",
+    "@unitybase/adminui-reg": "^5.4.40",
+    "@unitybase/adminui-vue": "^1.13.6",
+    "@unitybase/cdn": "^5.4.34",
+    "@unitybase/org": "^5.4.4",
+    "@unitybase/ubcli": "^5.7.3",
+    "@unitybase/ubq": "^5.4.3"
   },
   "devDependencies": {
     "@unitybase/ub-migrate": "^1.14.1",
-    "eslint": "^7.8.1",
+    "eslint": "^7.9.0",
     "eslint-config-standard": "^14.1.1",
     "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-node": "^11.1.0",

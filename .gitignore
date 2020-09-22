@@ -3,6 +3,7 @@ logs
 .vscode
 avatars
 docs
+main.sql
 mainDB.db
 mainDB.db-wal
 mainDB.db-shm
