@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Title</title>
+  <title>Profit & Loss</title>
   <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
 
   <!-- import CSS -->
@@ -18,29 +18,28 @@
 <body>
   <div id="app">
     <el-menu default-active="1" 
-          mode="horizontal"
-          background-color="#545c64"
-          text-color="#fff"
-          active-text-color="#ffd04b">
+        mode="horizontal"
+        background-color="#545c64"
+        text-color="#fff"
+        active-text-color="#ffd04b">
 
-        <el-menu-item index="0">
-          <a href="https://unitybase.info/" target="_blank">
-              <img alt="Brand" src="https://unitybase.info/img/logo.svg" height="40px"></a>
-        </el-menu-item>
+      <el-menu-item index="0">
+        <img alt="Logo" src="logo.png" height="40px">
+      </el-menu-item>
 
-        <el-menu-item index="1">Home</el-menu-item>
+      <el-menu-item index="1">Home</el-menu-item>
 
-        <el-menu-item index="2">
-          <a href="https://git-pub.intecracy.com/unitybase/samples/tree/master/courses/tutorial-v5" target="_blank">Tutorials</a>
-        </el-menu-item>
+      <el-menu-item index="2">
+        <a href="https://git-pub.intecracy.com/unitybase/samples/tree/master/courses/tutorial-v5" target="_blank">Tutorials</a>
+      </el-menu-item>
 
-        <el-menu-item index="3" v-if="!isLogIn">
-            <el-button @click="logInFormVisible = true" type="primary">Log in</el-button>
-        </el-menu-item>
+      <el-menu-item index="3" v-if="!isLogIn">
+        <el-button @click="logInFormVisible = true" type="primary">Log in</el-button>
+      </el-menu-item>
 
-        <el-menu-item index="3" v-else>
-            <el-button @click="logout" type="primary">Log out</el-button>
-        </el-menu-item>
+      <el-menu-item index="3" v-else>
+        <el-button @click="logout" type="primary">Log out</el-button>
+      </el-menu-item>
     </el-menu>
     <el-dialog title="Log in to Profit & Loss"
           :visible.sync="logInFormVisible">

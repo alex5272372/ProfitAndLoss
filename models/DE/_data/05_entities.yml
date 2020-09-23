@@ -1,0 +1,13 @@
+- $context:
+    type: de_model
+
+  1С Управление небольшой фирмой:
+  UB Profit and Loss:
+
+- $context:
+    type: de_entity
+
+  Номенклатура:
+    parentModel: 1С Управление небольшой фирмой
+  pl_product:
+    parentModel: UB Profit and Loss

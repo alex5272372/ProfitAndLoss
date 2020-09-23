@@ -9,13 +9,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@unitybase/adminui-pub": "^5.13.40",
-    "@unitybase/adminui-reg": "^5.4.40",
-    "@unitybase/adminui-vue": "^1.13.6",
-    "@unitybase/cdn": "^5.4.34",
-    "@unitybase/org": "^5.4.4",
-    "@unitybase/ubcli": "^5.7.3",
-    "@unitybase/ubq": "^5.4.3"
+    "@unitybase/adminui-pub": "^5.13.42",
+    "@unitybase/adminui-reg": "^5.4.42",
+    "@unitybase/adminui-vue": "^1.13.9",
+    "@unitybase/cdn": "^5.4.36",
+    "@unitybase/org": "^5.4.6",
+    "@unitybase/ubcli": "^5.7.5",
+    "@unitybase/ubq": "^5.4.5"
   },
   "devDependencies": {
     "@unitybase/ub-migrate": "^1.14.1",
