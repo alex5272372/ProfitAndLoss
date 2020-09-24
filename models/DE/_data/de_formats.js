@@ -1,10 +1,10 @@
-const { extend } = require('@unitybase/ub-migrate')
+const {
+  EntityFormat,
+  EntityRepository
+} = require('@unitybase/ub-migrate').extend
 
-/**
- * @param {Container} container
- */
 module.exports = function (container) {
-  /* extend.registerEntity(
+  /* new EntityRepository(
     entityName,
     keyAttributes,
     regularAttributes,
@@ -12,15 +12,46 @@ module.exports = function (container) {
     lookupAttributes,
     nonUpdatableAttributes
   ) */
-  extend.registerEntity(
-    'de_model',
-    ['name']
+
+  container.registerRepository(
+    new EntityRepository(
+      'de_model',
+      ['name']
+    )
   )
-  extend.registerEntity(
-    'de_entity',
-    ['name'],
-    [],
-    [],
-    [{ repository: 'de_model', attribute: 'parentModel', targetAttribute: 'parentModel' }]
+
+  container.registerRepository(
+    new EntityRepository(
+      'de_entity',
+      ['name'],
+      [],
+      [],
+      [{
+        repository: container.getRepository('de_model'),
+        attribute: 'model',
+        targetAttribute: 'parentModel'
+      }]
+    )
   )
+
+  const mdEntity = new EntityFormat()
+    .key('name')
+    .fromContext('model')
+    .wrapAsEntity('de_entity')
+
+  const mdModel = new EntityFormat()
+    .key('name')
+    .child(
+      'entities',
+      {
+        context: {
+          model: 'name'
+        },
+        metadata: mdEntity
+      }
+    )
+    .wrapAsEntity('de_model')
+
+  container.registerFileType('de_entity', mdEntity)
+  container.registerFileType('de_model', mdModel)
 }
