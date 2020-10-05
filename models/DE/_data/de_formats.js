@@ -34,9 +34,37 @@ module.exports = function (container) {
     )
   )
 
+  container.registerRepository(
+    new EntityRepository(
+      'de_attribute',
+      ['name'],
+      [],
+      [],
+      [{
+        repository: container.getRepository('de_entity'),
+        attribute: 'entity',
+        targetAttribute: 'parentEntity'
+      }]
+    )
+  )
+
+  const mdAttribute = new EntityFormat()
+    .key('name')
+    .fromContext('entity')
+    .wrapAsEntity('de_attribute')
+
   const mdEntity = new EntityFormat()
     .key('name')
     .fromContext('model')
+    .child(
+      'attributes',
+      {
+        context: {
+          entity: 'name'
+        },
+        metadata: mdAttribute
+      }
+    )
     .wrapAsEntity('de_entity')
 
   const mdModel = new EntityFormat()

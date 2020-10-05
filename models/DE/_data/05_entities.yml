@@ -4,6 +4,11 @@ $context:
 1С Управление небольшой фирмой:
   entities:
     Номенклатура:
+      attributes:
+        Код:
+        Наименование:
 UB Profit and Loss:
   entities:
     pl_product:
+      attributes:
+        name:
